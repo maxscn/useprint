@@ -6,7 +6,7 @@ import url from 'node:url';
 const filename = url.fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
-const nextBuildProcess = spawn('bunx', ['next', 'build'], {
+const nextBuildProcess = spawn('bunx', ['next', 'build', '--webpack'], {
   detached: true,
   shell: true,
   stdio: 'inherit',
