@@ -1,6 +1,6 @@
 "use client";
 
-import { PAGE_SIZES, type PageSize } from "@skrift/components/page";
+import { PAGE_SIZES, type PageSize } from "@skrift/components";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { use, useState } from "react";
 import { flushSync } from "react-dom";

@@ -14,6 +14,8 @@ const PAGE_SIZE_FORMAT_MAP: Record<string, string> = {
 	A5: "A5",
 };
 
+import { PAGE_SIZES } from "@skrift/components/page";
+
 // Reuse browser instance across requests for better performance
 let browserInstance: Awaited<ReturnType<typeof chromium.launch>> | null = null;
 
@@ -52,7 +54,6 @@ export async function generatePdfFromHtml(
 
 		if (pageSize) {
 			// Import PAGE_SIZES dynamically to avoid circular dependencies
-			const { PAGE_SIZES } = await import("@skrift/components/page");
 			const sizeConfig = PAGE_SIZES.find((p) => p.name === pageSize);
 
 			if (sizeConfig) {

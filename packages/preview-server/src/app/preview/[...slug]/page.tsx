@@ -1,5 +1,5 @@
 import path from "node:path";
-import type { PAGE_SIZES } from "@skrift/components/page";
+import type { PAGE_SIZES } from "@skrift/components";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import {

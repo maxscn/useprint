@@ -1,5 +1,5 @@
 import { Slot } from "@radix-ui/react-slot";
-import type { PageSize } from "@skrift/components/page";
+import type { PageSize } from "@skrift/components";
 import { type ComponentProps, useCallback, useEffect, useRef } from "react";
 import { cn } from "../utils";
 

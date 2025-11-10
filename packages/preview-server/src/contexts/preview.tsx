@@ -1,5 +1,5 @@
 "use client";
-import type { PAGE_SIZES } from "@skrift/components/page";
+import type { PAGE_SIZES } from "@skrift/components";
 import { useRouter, useSearchParams } from "next/navigation";
 import { createContext, useContext } from "react";
 import type {
