@@ -1245,6 +1245,7 @@ export const RegularPDF = ({ pageSize }: RegularPDFProps) => (
 			<Head />
 			<Body>
 				<Page>
+          First page
 					<PageSizeDemo />
 					<p className="text-black mt-4">
 						This content is now inside a Page component that responds to the
