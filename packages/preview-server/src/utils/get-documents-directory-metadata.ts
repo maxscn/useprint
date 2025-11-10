@@ -83,7 +83,7 @@ export const getDocumentsDirectoryMetadata = async (
   baseDirectoryPath = absolutePathToDocumentsDirectory,
 ): Promise<DocumentsDirectory | undefined> => {
   if (!fs.existsSync(absolutePathToDocumentsDirectory)) return;
-
+  
   const dirents = await fs.promises.readdir(absolutePathToDocumentsDirectory, {
     withFileTypes: true,
   });

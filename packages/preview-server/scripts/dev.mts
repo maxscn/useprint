@@ -20,10 +20,21 @@ NEXT_PUBLIC_IS_PREVIEW_DEVELOPMENT=true`,
   'utf8',
 );
 
-const webServerProcess = child_process.spawn('next', ['dev'], {
+// Pass environment variables directly to the Next.js process
+// This ensures they're available even if .env.local isn't loaded immediately
+const env = {
+  ...process.env,
+  DOCUMENTS_DIR_RELATIVE_PATH: './documents',
+  DOCUMENTS_DIR_ABSOLUTE_PATH: documentsDirectoryPath,
+  USER_PROJECT_LOCATION: previewServerRoot,
+  NEXT_PUBLIC_IS_PREVIEW_DEVELOPMENT: 'true',
+};
+
+const webServerProcess = child_process.spawn('next', ['dev', '--webpack'], {
   cwd: previewServerRoot,
   shell: true,
   stdio: 'inherit',
+  env,
 });
 
 webServerProcess.on('exit', async () => {

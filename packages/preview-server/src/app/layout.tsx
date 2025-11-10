@@ -15,7 +15,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
   const documentsDirectoryMetadata = await getDocumentsDirectoryMetadata(
     documentsDirectoryAbsolutePath,
   );
-
+  console.log('documentsDirectoryMetadata', documentsDirectoryMetadata);
   if (typeof documentsDirectoryMetadata === 'undefined') {
     throw new Error(
       `Could not find the documents directory specified under ${documentsDirectoryAbsolutePath}!`,

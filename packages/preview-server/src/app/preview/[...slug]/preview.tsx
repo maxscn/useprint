@@ -6,11 +6,11 @@ import { use, useState } from "react";
 import { flushSync } from "react-dom";
 import { Toaster } from "sonner";
 import { useDebouncedCallback } from "use-debounce";
-import { MeasuredIframe, Topbar } from "../../../components";
+import { Topbar } from "../../../components";
 import { CodeContainer } from "../../../components/code-container";
-import PdfViewer from "../../../components/pdf-viewer";
+import { PdfViewer } from "../../../components/pdf-viewer";
 import { Print } from "../../../components/print";
-import { ResizableWrapper } from "../../../components/resizable-wrapper";
+
 import { useToolbarState } from "../../../components/toolbar";
 import { Tooltip } from "../../../components/tooltip";
 import { ActiveViewToggleGroup } from "../../../components/topbar/active-view-toggle-group";
@@ -139,8 +139,12 @@ const Preview = ({
 			<div
 				{...props}
 				className={cn(
-					"h-[calc(100%-3.5rem-2.375rem)] will-change-[height] flex p-4 transition-[height] duration-300 overflow-auto",
+					"h-[calc(100%-3.5rem-2.375rem)] will-change-[height] flex transition-[height] duration-300",
 					activeView === "preview" && "bg-gray-200",
+					activeView === "preview" &&
+						renderedDocumentMetadata?.pdfData &&
+						"p-0",
+					activeView !== "preview" && "p-4 overflow-auto",
 					toolbarToggled && "h-[calc(100%-3.5rem-13rem)]",
 					className,
 				)}
@@ -166,14 +170,16 @@ const Preview = ({
 
 				{hasRenderingMetadata ? (
 					<>
-						{activeView === "preview" && renderedDocumentMetadata.pdfData && (
-							<PdfViewer
-								pdfData={renderedDocumentMetadata.pdfData}
-								width={currentPreset.dimensions.width}
-								height={currentPreset.dimensions.height}
-								key={pageSize + documentTitle}
-							/>
-						)}
+						{activeView === "preview" &&
+							renderedDocumentMetadata.pdfData &&
+							PdfViewer && (
+								<PdfViewer
+									pdfData={renderedDocumentMetadata.pdfData}
+									width={currentPreset.dimensions.width}
+									height={currentPreset.dimensions.height}
+									key={pageSize + documentTitle}
+								/>
+							)}
 						{activeView === "preview" && !renderedDocumentMetadata.pdfData && (
 							<div className="flex items-center justify-center h-full">
 								<div className="text-center">

@@ -23,15 +23,22 @@
     "declaration": false,
     "declarationMap": false,
     "incremental": false,
-    "jsx": "preserve",
-    "lib": ["dom", "dom.iterable", "esnext", "ESNext.AsyncIterable"],
+    "jsx": "react-jsx",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext",
+      "ESNext.AsyncIterable"
+    ],
     "noEmit": true,
     "strict": false,
     "target": "ESNext",
     "module": "preserve",
     "noUncheckedIndexedAccess": true,
     "resolveJsonModule": true,
-    "types": ["vitest/globals"],
+    "types": [
+      "vitest/globals"
+    ],
     "outDir": "dist"
   },
   "include": [
@@ -39,7 +46,13 @@
     "tailwind-internals.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
   ],
-  "exclude": [".next", "dist", "node_modules", "scripts/utils"]
+  "exclude": [
+    ".next",
+    "dist",
+    "node_modules",
+    "scripts/utils"
+  ]
 }

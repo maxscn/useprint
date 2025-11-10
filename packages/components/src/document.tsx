@@ -30,22 +30,8 @@ export const Document: React.FC<DocumentProps> = ({
           @media print {
             background-color: white;
           }
-          @page {
-              size: ${dimensions?.name};
-              margin: 0;
-            }
-
-            table[data-split-from] thead,
-            table[data-split-from] thead :is(th, tr) {
-              visibility: unset !important;
-              margin-top: unset !important;
-              margin-bottom: unset !important;
-              padding-top: unset !important;
-              padding-bottom: unset !important;
-              border-top: unset !important;
-              border-bottom: unset !important;
-              line-height: unset !important;
-              opacity: unset !important;
+            div[title="end of content"] {
+              display: none !important;
             }
             `}
 				</style>
