@@ -1,5 +1,11 @@
 # @skrift/tailwind
 
+## 0.0.4
+
+### Patch Changes
+
+- 3ecd252: Moving to playwright for rendering pdfs instead of pagedjs. This is more inline with how they are actually printed.
+
 ## 0.0.3
 
 ### Patch Changes

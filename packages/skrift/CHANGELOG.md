@@ -1,5 +1,11 @@
 # skrift
 
+## 0.0.7
+
+### Patch Changes
+
+- 3ecd252: Moving to playwright for rendering pdfs instead of pagedjs. This is more inline with how they are actually printed.
+
 ## 0.0.6
 
 ### Patch Changes
