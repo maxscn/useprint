@@ -9,11 +9,13 @@ import { getDocumentComponent } from '../utils/get-document-component';
 import { improveErrorWithSourceMap } from '../utils/improve-error-with-sourcemap';
 import { registerSpinnerAutostopping } from '../utils/register-spinner-autostopping';
 import type { ErrorObject } from '../utils/types/error-object';
+import { generatePdfFromHtml } from './generate-pdf-from-html';
 
 export interface RenderedDocumentMetadata {
   markup: string;
   plainText: string;
   reactMarkup: string;
+  pdfData: string; // base64 encoded PDF
 }
 
 export type DocumentRenderingResult =
@@ -82,6 +84,18 @@ export const renderDocumentByPath = async (
 
     const reactMarkup = await fs.promises.readFile(documentPath, 'utf-8');
 
+    // Generate PDF from HTML markup
+    let pdfData: string;
+    try {
+      pdfData = await generatePdfFromHtml(markup.replaceAll('\0', ''), pageSize);
+      console.log("PDF data generated, length:", pdfData.length, "first 50 chars:", pdfData.substring(0, 50));
+    } catch (pdfError) {
+      // If PDF generation fails, log but don't fail the entire rendering
+      // We'll return an empty string or handle it gracefully
+      console.error(`Failed to generate PDF for ${documentFilename}:`, pdfError);
+      pdfData = '';
+    }
+
     const millisecondsToRendered = performance.now() - timeBeforeDocumentRendered;
     let timeForConsole = `${millisecondsToRendered.toFixed(0)}ms`;
     if (millisecondsToRendered <= 450) {
@@ -103,7 +117,10 @@ export const renderDocumentByPath = async (
       markup: markup.replaceAll('\0', ''),
       plainText,
       reactMarkup,
+      pdfData,
     };
+
+    console.log("Rendering result pdfData length:", renderingResult.pdfData.length);
 
     cache.set(cacheKey, renderingResult);
 

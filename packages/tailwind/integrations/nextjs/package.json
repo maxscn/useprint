@@ -9,7 +9,7 @@
     "preinstall": "yalc add @skrift/tailwind"
   },
   "dependencies": {
-    "@skrift/components": "0.0.36",
+    "@skrift/components": "workspace:*",
     "@skrift/tailwind": "file:.yalc/@skrift/tailwind",
     "next": "^15",
     "react": "^19",

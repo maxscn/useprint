@@ -2,7 +2,7 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import * as React from 'react';
 import { cn } from '../../utils';
 import { IconArrowDown } from '../icons/icon-arrow-down';
-import { PAGE_SIZES, PageSize, ViewDimensions } from '@skrift/components';
+import { PAGE_SIZES, type PageSize, type ViewDimensions } from '@skrift/components/page';
 
 
 

@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@skrift/components": "0.0.36",
+    "@skrift/components": "workspace:*",
     "@skrift/tailwind": "file:.yalc/@skrift/tailwind",
     "react": "^19",
     "react-dom": "^19"

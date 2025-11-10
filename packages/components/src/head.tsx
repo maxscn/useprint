@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { usePageSize } from './page';
+import { usePageSize } from './page.tsx';
 
 export type HeadProps = Readonly<React.ComponentPropsWithoutRef<'head'>>;
 

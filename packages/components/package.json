@@ -9,7 +9,7 @@
     "dist/**"
   ],
   "scripts": {
-    "build": "tsup-node",
+    "build": "tsup-node && tsc --project tsconfig.dts-main.json",
     "build:watch": "tsup-node --watch",
     "clean": "rm -rf dist",
     "test": "vitest run",
@@ -34,6 +34,16 @@
       "require": {
         "types": "./dist/index.d.ts",
         "default": "./dist/index.js"
+      }
+    },
+    "./page": {
+      "import": {
+        "types": "./dist/page.d.ts",
+        "default": "./dist/page.mjs"
+      },
+      "require": {
+        "types": "./dist/page.d.ts",
+        "default": "./dist/page.js"
       }
     }
   },
