@@ -1,5 +1,11 @@
 # @skrift/preview-server
 
+## 0.0.9
+
+### Patch Changes
+
+- da34159: Fixes a bug with hot reloading
+
 ## 0.0.7
 
 ### Patch Changes
