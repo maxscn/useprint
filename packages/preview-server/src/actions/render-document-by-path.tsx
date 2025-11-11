@@ -32,7 +32,15 @@ export const renderDocumentByPath = async (
   pageSize?: string,
 ): Promise<DocumentRenderingResult> => {
   const cacheKey = `${documentPath}${pageSize ? `__${pageSize}` : ''}`;
-  if (invalidatingCache) cache.delete(cacheKey);
+  if (invalidatingCache) {
+    // Delete all cache entries for this document path (both with and without pageSize)
+    // This ensures hot reload properly invalidates cached results regardless of pageSize
+    for (const key of cache.keys()) {
+      if (key === documentPath || key.startsWith(`${documentPath}__`)) {
+        cache.delete(key);
+      }
+    }
+  }
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   if (cache.has(cacheKey)) return cache.get(cacheKey)!;
   const timeBeforeDocumentRendered = performance.now();
