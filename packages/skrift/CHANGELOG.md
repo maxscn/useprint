@@ -1,5 +1,12 @@
 # skrift
 
+## 0.0.10
+
+### Patch Changes
+
+- 3841b1d: New logo, fix new-page.
+- e113c75: Removing an ugly logo.
+
 ## 0.0.9
 
 ### Patch Changes
