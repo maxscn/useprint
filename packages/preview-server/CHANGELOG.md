@@ -1,5 +1,14 @@
 # @skrift/preview-server
 
+## 0.0.10
+
+### Patch Changes
+
+- 3841b1d: New logo, fix new-page.
+- e113c75: Removing an ugly logo.
+- Updated dependencies [3841b1d]
+  - @skrift/components@0.0.14
+
 ## 0.0.9
 
 ### Patch Changes

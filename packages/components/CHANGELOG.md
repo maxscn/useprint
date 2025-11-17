@@ -1,5 +1,11 @@
 # @skrift/components
 
+## 0.0.14
+
+### Patch Changes
+
+- 3841b1d: New logo, fix new-page.
+
 ## 0.0.13
 
 ### Patch Changes
