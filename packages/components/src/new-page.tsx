@@ -1,16 +1,9 @@
-import React from 'react';
-
-
+import type React from "react";
 
 export const NewPage: React.FC = () => {
-  const unbreakableStyle: React.CSSProperties = {
-    breakAfter: 'column',
-  };
+	const unbreakableStyle: React.CSSProperties = {
+		breakAfter: "all",
+	};
 
-  return (
-    <div 
-      className={`skrift-new-page`}
-      style={unbreakableStyle}
-      />
-  );
+	return <div style={unbreakableStyle} />;
 };
