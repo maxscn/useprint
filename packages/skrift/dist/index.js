@@ -106,7 +106,7 @@ import prompts from "prompts";
 // package.json
 var package_default = {
   name: "@skrift/skrift",
-  version: "0.0.9",
+  version: "0.0.10",
   description: "A live preview of your documents right in your browser.",
   bin: {
     skrift: "./dist/index.js"

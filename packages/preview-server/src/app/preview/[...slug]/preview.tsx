@@ -80,7 +80,7 @@ const Preview = ({
 		maxHeight,
 	);
 	const backupPreset = PAGE_SIZES.find((p) => p.name === "A4")!;
-	const [currentPreset, setCurrentPreset] = useState<PageSize>(
+	const [currentPreset, setCurrentPreset] = useState<(typeof PAGE_SIZES)[number]>(
 		storedPageSize
 			? PAGE_SIZES.find((p) => p.name === storedPageSize) || backupPreset
 			: backupPreset,
@@ -120,7 +120,7 @@ const Preview = ({
 					viewHeight={height}
 					viewWidth={width}
 					onPresetChange={(preset) => {
-						setCurrentPreset(preset);
+						setCurrentPreset(preset as (typeof PAGE_SIZES)[number]);
 						flushSync(() => {
 							handleSaveViewSize();
 						});
