@@ -15,9 +15,9 @@ const ensurePreviewServerInstalled = async (
     initial: true,
   });
   if (response.installPreviewServer) {
-    console.log('Installing "@useprint/preview-server"');
+    console.log('Installing "@useprint/preview"');
     await addDevDependency(
-      `@useprint/preview-server@${packageJson.version}`,
+      `@useprint/preview@${packageJson.version}`,
     );
     process.exit(0);
   } else {
@@ -30,19 +30,19 @@ export const getPreviewServerLocation = async () => {
   let previewServerLocation!: string;
   try {
     previewServerLocation = path.dirname(
-      url.fileURLToPath(usersProject.esmResolve('@useprint/preview-server')),
+      url.fileURLToPath(usersProject.esmResolve('@useprint/preview')),
     );
   } catch (_exception) {
     await ensurePreviewServerInstalled(
-      'To run the preview server, the package "@useprint/preview-server" must be installed. Would you like to install it?',
+      'To run the preview server, the package "@useprint/preview" must be installed. Would you like to install it?',
     );
   }
   const { version } = await usersProject.import<{
     version: string;
-  }>('@useprint/preview-server');
+  }>('@useprint/preview');
   if (version !== packageJson.version) {
     await ensurePreviewServerInstalled(
-      `To run the preview server, the version of "@useprint/preview-server" must match the version of "useprint" (${packageJson.version}). Would you like to install it?`,
+      `To run the preview server, the version of "@useprint/preview" must match the version of "useprint" (${packageJson.version}). Would you like to install it?`,
     );
   }
 

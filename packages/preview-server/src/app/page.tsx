@@ -23,7 +23,7 @@ const Home = () => {
             folder.
           </Text>
           <Button asChild className="mt-3" size="3">
-            <Link href="https://useprint.app/docs">Check the docs</Link>
+            <Link href="https://useprint.dev/docs">Check the docs</Link>
           </Button>
         </div>
       </div>

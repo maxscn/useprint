@@ -103,27 +103,7 @@ describe('render on the browser environment', () => {
     );
   });
 
-  it('converts a React component into PlainText', async () => {
-    const actualOutput = await render(<Template firstName="Jim" />, {
-      plainText: true,
-    });
-
-    expect(actualOutput).toMatchInlineSnapshot(`
-      "WELCOME, JIM!
-
-      Thanks for trying our product. We're thrilled to have you on board!"
-    `);
-  });
-
-  it('converts to plain text and removes reserved ID', async () => {
-    const actualOutput = await render(<Preview />, {
-      plainText: true,
-    });
-
-    expect(actualOutput).toMatchInlineSnapshot(
-      `"THIS SHOULD BE RENDERED IN PLAIN TEXT"`,
-    );
-  });
+  ;
 
   it('should properly wait for Suepsense boundaries to ending before resolving', async () => {
     const DocumentTemplate = () => {

@@ -10,3 +10,12 @@ UsePrint is for PDFs what react.email is for creating emails. It provides a set 
 There is a lack of libraries for iteratively building PDF documents, without the generation step. The generation step is either done using a library where you directly interact with the PDF standard, which is cumbersome and makes designing beautiful PDFs a pain. The other alternative is to use a headless browser like puppeteer or playwright to make the PDF - UsePrint does this too, but provides a preview UI for you to iterate on your PDFs in real-time.
 
 The closest thing that exists is react-pdf, which is a great library for generating PDFs but with one big caveat: you have to use their React DOM. This means that you cannot use tailwind, regular css or your own custom components. UsePrint allows you to bring your own components to compose your PDFs.
+
+
+## Credits
+
+Most of this code was written by the react.email team (as this library was forked from react.email) - which I am not affiliated with in any way. Many of the principles that can be applied to emails can also be applied to PDFs, with less restrictions and less requirements.
+
+## License
+
+MIT License

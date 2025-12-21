@@ -48,7 +48,7 @@ export const useSpamAssassin = ({
     setLoading(true);
 
     try {
-      const response = await fetch('https://useprint.app/api/check-spam', {
+      const response = await fetch('https://useprint.dev/api/check-spam', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

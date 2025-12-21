@@ -6,7 +6,7 @@ test('checkLinks()', async () => {
   <a href="/">Root</a>
   <a href="https://useprint.com">UsePrint</a>
   <a href="https://notion.so">Notion</a>
-  <a href="http://useprint.app">UsePrint unsafe</a>
+  <a href="http://useprint.dev">UsePrint unsafe</a>
 </div>`;
   const stream = await checkLinks(html);
   const reader = stream.getReader();
@@ -107,7 +107,7 @@ test('checkLinks()', async () => {
           passed: false,
         },
       ],
-      link: 'http://useprint.app',
+      link: 'http://useprint.dev',
     },
   ] satisfies LinkCheckingResult[]);
 });

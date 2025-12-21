@@ -66,6 +66,6 @@ export default function ForgotPassword({
 }
 
 ForgotPassword.PreviewProps = {
-  resetLink: 'https://useprint.app/reset-password/123',
+  resetLink: 'https://useprint.dev/reset-password/123',
   expiryTime: '1 hour',
 } satisfies ForgotPasswordProps;

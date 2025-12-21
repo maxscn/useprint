@@ -1,4 +1,4 @@
-# @useprint/preview-server
+# @useprint/preview
 
 ## 0.1.0
 

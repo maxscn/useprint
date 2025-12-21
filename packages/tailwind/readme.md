@@ -1,14 +1,14 @@
-![UsePrint Tailwind cover](https://useprint.app/static/covers/tailwind.png)
+![UsePrint Tailwind cover](https://useprint.dev/static/covers/tailwind.png)
 
 <div align="center"><strong>@useprint/tailwind</strong></div>
 <div align="center">A React component to wrap documents with Tailwind CSS.</div>
 <br />
 <div align="center">
-<a href="https://useprint.app">Website</a> 
+<a href="https://useprint.dev">Website</a> 
 <span> · </span>
-<a href="https://useprint.app">Documentation</a> 
+<a href="https://useprint.dev">Documentation</a> 
 <span> · </span>
-<a href="https://useprint.app">Twitter</a>
+<a href="https://useprint.dev">Twitter</a>
 </div>
 
 ## Install
@@ -117,7 +117,7 @@ on that.
 
 This component was tested using the most popular document clients.
 
-| <img src="https://useprint.app/static/icons/gmail.svg" width="48px" height="48px" alt="Gmail logo"> | <img src="https://useprint.app/static/icons/apple-mail.svg" width="48px" height="48px" alt="Apple Mail"> | <img src="https://useprint.app/static/icons/outlook.svg" width="48px" height="48px" alt="Outlook logo"> | <img src="https://useprint.app/static/icons/yahoo-mail.svg" width="48px" height="48px" alt="Yahoo! Mail logo"> | <img src="https://useprint.app/static/icons/hey.svg" width="48px" height="48px" alt="HEY logo"> | <img src="https://useprint.app/static/icons/superhuman.svg" width="48px" height="48px" alt="Superhuman logo"> |
+| <img src="https://useprint.dev/static/icons/gmail.svg" width="48px" height="48px" alt="Gmail logo"> | <img src="https://useprint.dev/static/icons/apple-mail.svg" width="48px" height="48px" alt="Apple Mail"> | <img src="https://useprint.dev/static/icons/outlook.svg" width="48px" height="48px" alt="Outlook logo"> | <img src="https://useprint.dev/static/icons/yahoo-mail.svg" width="48px" height="48px" alt="Yahoo! Mail logo"> | <img src="https://useprint.dev/static/icons/hey.svg" width="48px" height="48px" alt="HEY logo"> | <img src="https://useprint.dev/static/icons/superhuman.svg" width="48px" height="48px" alt="Superhuman logo"> |
 | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
 | Gmail ✔                                                                                           | Apple Mail ✔                                                                                           | Outlook ✔                                                                                             | Yahoo! Mail ✔                                                                                                | HEY ✔                                                                                         | Superhuman ✔                                                                                                |
 

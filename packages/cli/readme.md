@@ -1,14 +1,14 @@
-![UsePrint cover](https://useprint.app/static/covers/useprint.png)
+![UsePrint cover](https://useprint.dev/static/covers/useprint.png)
 
 <div align="center"><strong>UsePrint</strong></div>
 <div align="center">The next generation of writing documents.<br />High-quality, unstyled components for creating documents.</div>
 <br />
 <div align="center">
-<a href="https://useprint.app">Website</a> 
+<a href="https://useprint.dev">Website</a> 
 <span> · </span>
 <a href="https://github.com/maxscn/useprint">GitHub</a> 
 <span> · </span>
-<a href="https://useprint.app/discord">Discord</a>
+<a href="https://useprint.dev/discord">Discord</a>
 </div>
 
 ## Getting started

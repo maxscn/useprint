@@ -1,5 +1,5 @@
 ---
-"@useprint/preview-server": patch
+"@useprint/preview": patch
 "@useprint/tailwind": patch
 "@useprint/render": patch
 "useprint": patch

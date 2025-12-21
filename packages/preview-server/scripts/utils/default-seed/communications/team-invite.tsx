@@ -73,6 +73,6 @@ export default function TeamInvite({
 TeamInvite.PreviewProps = {
   inviterName: 'John Doe',
   teamName: 'Marketing Team',
-  inviteLink: 'https://useprint.app/join/team/123',
+  inviteLink: 'https://useprint.dev/join/team/123',
   role: 'Editor',
 } satisfies TeamInviteProps;

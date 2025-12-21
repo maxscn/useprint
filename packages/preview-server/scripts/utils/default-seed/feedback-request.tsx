@@ -44,17 +44,17 @@ export default function FeedbackRequest({ name }: FeedbackRequestProps) {
               If you have any questions about the service or need assistance,
               please feel free to reach out to us at{' '}
               <a
-                href="mailto:support@useprint.app"
+                href="mailto:support@useprint.dev"
                 className="text-cyan-300 underline"
               >
-                support@useprint.app
+                support@useprint.dev
               </a>
               .
             </Text>
             <Row className="w-full">
               <Column className="w-full">
                 <Button
-                  href="https://useprint.app"
+                  href="https://useprint.dev"
                   className="bg-cyan-300 text-[20px] font-bold text-[#404040] w-full text-center border border-solid border-cyan-900 py-[8px] rounded-[8px]"
                 >
                   Give Feedback

@@ -63,6 +63,6 @@ export default function AccountConfirmation({
 }
 
 AccountConfirmation.PreviewProps = {
-  confirmLink: 'https://useprint.app/confirm/123',
+  confirmLink: 'https://useprint.dev/confirm/123',
   expiryTime: '24 hours',
 } satisfies AccountConfirmationProps;

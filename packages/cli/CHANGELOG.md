@@ -65,7 +65,7 @@
 
 ### Minor Changes
 
-- abf8599: use a separate package for storing the preview server (@useprint/preview-server)
+- abf8599: use a separate package for storing the preview server (@useprint/preview)
 
 ### Patch Changes
 
@@ -91,7 +91,7 @@
 
 ### Minor Changes
 
-- ed2f46a: use a separate package for storing the preview server (@useprint/preview-server)
+- ed2f46a: use a separate package for storing the preview server (@useprint/preview)
 
 ## 4.1.0-canary.7
 

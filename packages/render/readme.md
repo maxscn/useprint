@@ -1,14 +1,14 @@
-![UsePrint button cover](https://useprint.app/static/covers/render.png)
+![UsePrint button cover](https://useprint.dev/static/covers/render.png)
 
 <div align="center"><strong>@useprint/render</strong></div>
 <div align="center">Transform React components into HTML document templates.</div>
 <br />
 <div align="center">
-<a href="https://useprint.app">Website</a> 
+<a href="https://useprint.dev">Website</a> 
 <span> · </span>
 <a href="https://github.com/maxscn/useprint">GitHub</a> 
 <span> · </span>
-<a href="https://useprint.app/discord">Discord</a>
+<a href="https://useprint.dev/discord">Discord</a>
 </div>
 
 ## Install

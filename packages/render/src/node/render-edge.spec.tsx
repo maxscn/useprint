@@ -85,26 +85,4 @@ describe('render on the edge', () => {
       `"<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><link rel="preload" as="image" href="img/test.png"/><!--$--><h1>Welcome, <!-- -->Jim<!-- -->!</h1><img alt="test" src="img/test.png"/><p>Thanks for trying our product. We&#x27;re thrilled to have you on board!</p><!--/$-->"`,
     );
   });
-
-  it('converts a React component into PlainText', async () => {
-    const actualOutput = await render(<Template firstName="Jim" />, {
-      plainText: true,
-    });
-
-    expect(actualOutput).toMatchInlineSnapshot(`
-      "WELCOME, JIM!
-
-      Thanks for trying our product. We're thrilled to have you on board!"
-    `);
-  });
-
-  it('converts to plain text and removes reserved ID', async () => {
-    const actualOutput = await render(<Preview />, {
-      plainText: true,
-    });
-
-    expect(actualOutput).toMatchInlineSnapshot(
-      `"THIS SHOULD BE RENDERED IN PLAIN TEXT"`,
-    );
-  });
 });

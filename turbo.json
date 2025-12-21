@@ -28,7 +28,7 @@
       ],
       "outputs": [".next/**", "!.next/cache/**"]
     },
-    "@useprint/preview-server#build": {
+    "@useprint/preview#build": {
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**"]
     },
