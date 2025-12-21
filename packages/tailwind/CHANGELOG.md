@@ -1,5 +1,11 @@
 # @useprint/tailwind
 
+## 0.1.0
+
+### Minor Changes
+
+- 83edf9b: Moving from "skrift" to "useprint".
+
 ## 0.0.4
 
 ### Patch Changes
