@@ -1,5 +1,5 @@
 import path from 'node:path';
-import type { render } from '@skrift/components';
+import type { render } from '@useprint/components';
 import { type BuildFailure, build, type OutputFile } from 'esbuild';
 import type React from 'react';
 import type { RawSourceMap } from 'source-map-js';

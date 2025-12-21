@@ -1,5 +1,5 @@
 import path from "node:path";
-import type { PAGE_SIZES } from "@skrift/components";
+import type { PAGE_SIZES } from "@useprint/components";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import {
@@ -146,7 +146,7 @@ export async function generateMetadata({
 }) {
 	const { slug } = await params;
 
-	return { title: `${path.basename(slug.join("/"))} — Skrift` };
+	return { title: `${path.basename(slug.join("/"))} — UsePrint` };
 }
 
 export default Page;

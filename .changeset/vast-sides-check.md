@@ -1,5 +1,5 @@
 ---
-"@skrift/components": patch
+"@useprint/components": patch
 ---
 
 Fix pagebreak for real.

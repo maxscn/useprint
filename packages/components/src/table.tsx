@@ -33,21 +33,21 @@ interface TableCellProps {
   isHeader?: boolean;
 }
 
-export const Table: React.FC<TableProps> = ({ 
-  children, 
-  className = '', 
+export const Table: React.FC<TableProps> = ({
+  children,
+  className = '',
   style = {},
-  ...props 
+  ...props
 }) => {
   return (
-    <table 
-      className={`skrift-table ${className}`}
-      style={{ 
+    <table
+      className={`useprint-table ${className}`}
+      style={{
         width: '100%',
         borderCollapse: 'collapse',
-        ...style 
+        ...style
       }}
-      data-skrift-table="true"
+      data-useprint-table="true"
       {...props}
     >
       {children}
@@ -55,17 +55,17 @@ export const Table: React.FC<TableProps> = ({
   );
 };
 
-export const TableHeader: React.FC<TableHeaderProps> = ({ 
-  children, 
-  className = '', 
+export const TableHeader: React.FC<TableHeaderProps> = ({
+  children,
+  className = '',
   style = {},
-  ...props 
+  ...props
 }) => {
   return (
-    <thead 
-      className={`skrift-table-header ${className}`}
+    <thead
+      className={`useprint-table-header ${className}`}
       style={style}
-      data-skrift-table-header="true"
+      data-useprint-table-header="true"
       {...props}
     >
       {children}
@@ -73,17 +73,17 @@ export const TableHeader: React.FC<TableHeaderProps> = ({
   );
 };
 
-export const TableBody: React.FC<TableBodyProps> = ({ 
-  children, 
-  className = '', 
+export const TableBody: React.FC<TableBodyProps> = ({
+  children,
+  className = '',
   style = {},
-  ...props 
+  ...props
 }) => {
   return (
-    <tbody 
-      className={`skrift-table-body ${className}`}
+    <tbody
+      className={`useprint-table-body ${className}`}
       style={style}
-      data-skrift-table-body="true"
+      data-useprint-table-body="true"
       {...props}
     >
       {children}
@@ -91,18 +91,18 @@ export const TableBody: React.FC<TableBodyProps> = ({
   );
 };
 
-export const TableRow: React.FC<TableRowProps> = ({ 
-  children, 
-  className = '', 
+export const TableRow: React.FC<TableRowProps> = ({
+  children,
+  className = '',
   style = {},
   isHeader = false,
-  ...props 
+  ...props
 }) => {
   return (
-    <tr 
-      className={`skrift-table-row skrift-unbreakable ${isHeader ? 'skrift-table-header-row' : ''} ${className}`}
+    <tr
+      className={`useprint-table-row useprint-unbreakable ${isHeader ? 'useprint-table-header-row' : ''} ${className}`}
       style={style}
-      data-skrift-table-row="true"
+      data-useprint-table-row="true"
       data-is-header={isHeader}
       data-unbreakable="true"
       {...props}
@@ -112,25 +112,25 @@ export const TableRow: React.FC<TableRowProps> = ({
   );
 };
 
-export const TableCell: React.FC<TableCellProps> = ({ 
-  children, 
-  className = '', 
+export const TableCell: React.FC<TableCellProps> = ({
+  children,
+  className = '',
   style = {},
   isHeader = false,
-  ...props 
+  ...props
 }) => {
   const Tag = isHeader ? 'th' : 'td';
-  
+
   return (
-    <Tag 
-      className={`skrift-table-cell ${isHeader ? 'skrift-table-header-cell' : ''} ${className}`}
-      style={{ 
+    <Tag
+      className={`useprint-table-cell ${isHeader ? 'useprint-table-header-cell' : ''} ${className}`}
+      style={{
         padding: isHeader ? "unset" : '8px',
         border: '1px solid #e5e7eb',
         textAlign: 'left',
-        ...style 
+        ...style
       }}
-      data-skrift-table-cell="true"
+      data-useprint-table-cell="true"
       data-is-header={isHeader}
       {...props}
     >

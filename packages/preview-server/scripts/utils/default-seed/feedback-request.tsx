@@ -11,7 +11,7 @@ import {
   Row,
   Tailwind,
   Text,
-} from '@skrift/components';
+} from '@useprint/components';
 
 interface FeedbackRequestProps {
   name: string;
@@ -44,27 +44,27 @@ export default function FeedbackRequest({ name }: FeedbackRequestProps) {
               If you have any questions about the service or need assistance,
               please feel free to reach out to us at{' '}
               <a
-                href="mailto:support@skrift.app"
+                href="mailto:support@useprint.app"
                 className="text-cyan-300 underline"
               >
-                support@skrift.app
+                support@useprint.app
               </a>
               .
             </Text>
             <Row className="w-full">
               <Column className="w-full">
                 <Button
-                  href="https://skrift.app"
+                  href="https://useprint.app"
                   className="bg-cyan-300 text-[20px] font-bold text-[#404040] w-full text-center border border-solid border-cyan-900 py-[8px] rounded-[8px]"
                 >
                   Give Feedback
                 </Button>
               </Column>
             </Row>
-            <Text className="mt-6">- Skrift team</Text>
+            <Text className="mt-6">- UsePrint team</Text>
             <Hr style={{ borderTopColor: '#404040' }} />
             <Text className="text-[#606060] font-bold">
-              Skrift, 999 React St, Document City, EC 12345
+              UsePrint, 999 React St, Document City, EC 12345
             </Text>
           </Container>
         </Body>

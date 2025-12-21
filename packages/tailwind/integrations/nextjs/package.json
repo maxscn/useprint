@@ -6,11 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "preinstall": "yalc add @skrift/tailwind"
+    "preinstall": "yalc add @useprint/tailwind"
   },
   "dependencies": {
-    "@skrift/components": "workspace:*",
-    "@skrift/tailwind": "file:.yalc/@skrift/tailwind",
+    "@useprint/components": "workspace:*",
+    "@useprint/tailwind": "file:.yalc/@useprint/tailwind",
     "next": "^15",
     "react": "^19",
     "react-dom": "^19"

@@ -18,7 +18,7 @@ export const parseSrcDocForUnbreakableElements = async (srcDoc: string): Promise
           return;
         }
 
-        const elements = iframeDoc.querySelectorAll('.skrift-unbreakable');
+        const elements = iframeDoc.querySelectorAll('.useprint-unbreakable');
         const results = Array.from(elements).map(el => {
           const bounds = el.getBoundingClientRect();
           const existingMarginTop = getEffectiveTopMargin(el, iframeDoc);
@@ -53,11 +53,11 @@ export const parseSrcDocForUnbreakableElements = async (srcDoc: string): Promise
 
 export const applyMarginToIframeSrcDoc = (srcDoc: string, marginTop: number): string => {
   const style = `<style>
-    .skrift-unbreakable:first-of-type {
+    .useprint-unbreakable:first-of-type {
       margin-top: ${marginTop}px !important;
     }
   </style>`;
-  
+
   if (srcDoc.includes('</head>')) {
     return srcDoc.replace('</head>', `${style}</head>`);
   } else if (srcDoc.includes('<body>')) {
@@ -70,20 +70,20 @@ export const applyMarginToIframeSrcDoc = (srcDoc: string, marginTop: number): st
 export const applyMarginsToSpecificIframeElements = (srcDoc: string, elementMargins: Map<number, number>): string => {
   console.log('=== APPLY MARGINS TO IFRAME SRCDOC START ===');
   console.log('Element margins to apply:', Array.from(elementMargins.entries()));
-  
+
   if (elementMargins.size === 0) {
     console.log('❌ No margins to apply');
     return srcDoc;
   }
-  
+
   // Parse the HTML and apply inline styles directly to elements
   const parser = new DOMParser();
   const doc = parser.parseFromString(srcDoc, 'text/html');
-  
-  // Find all elements with skrift-unbreakable class
-  const unbreakableElements = doc.querySelectorAll('.skrift-unbreakable');
+
+  // Find all elements with useprint-unbreakable class
+  const unbreakableElements = doc.querySelectorAll('.useprint-unbreakable');
   console.log(`Found ${unbreakableElements.length} unbreakable elements in iframe`);
-  
+
   // Apply margins to specific elements by index
   for (const [elementIndex, margin] of elementMargins.entries()) {
     if (elementIndex < unbreakableElements.length) {
@@ -101,11 +101,11 @@ export const applyMarginsToSpecificIframeElements = (srcDoc: string, elementMarg
       console.warn(`❌ Element index ${elementIndex} out of range (only ${unbreakableElements.length} elements)`);
     }
   }
-  
+
   // Convert back to string
   const modifiedSrcDoc = doc.documentElement.outerHTML;
   console.log('=== APPLY MARGINS TO IFRAME SRCDOC COMPLETE ===');
-  
+
   return modifiedSrcDoc;
 };
 
@@ -119,7 +119,7 @@ export const processIframeElements = async (unbreakableElements: UnbreakableElem
       for (const iframeItem of iframeElements) {
         if (iframeItem.srcDoc) {
           const elementsData = await parseSrcDocForUnbreakableElements(iframeItem.srcDoc);
-          
+
           // Add iframe container reference and element index to each data entry
           elementsData.forEach((data, index) => {
             iframeElementsData.push({

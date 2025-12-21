@@ -7,7 +7,7 @@ export const Logo = () => {
 		<div className="flex flex-col items-center justify-center py-4">
 			<Image
 				src={logo}
-				alt="Skrift Logo"
+				alt="UsePrint Logo"
 				width={200}
 				height={50}
 				className="object-contain"

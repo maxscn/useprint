@@ -43,10 +43,10 @@ describe('containsDocumentTemplate()', () => {
         ],
         subDirectories: [
           {
-            absolutePath: '/fake/path/documents/magic-links/skrift',
-            directoryName: 'skrift',
+            absolutePath: '/fake/path/documents/magic-links/useprint',
+            directoryName: 'useprint',
             documentFilenames: ['verify-document'],
-            relativePath: 'magic-links/skrift',
+            relativePath: 'magic-links/useprint',
             subDirectories: [],
           },
         ],
@@ -127,10 +127,10 @@ describe('containsDocumentTemplate()', () => {
 
   it('should work with document inside a second sub directory', () => {
     expect(
-      containsDocumentTemplate('magic-links/skrift/verify-document', directory),
+      containsDocumentTemplate('magic-links/useprint/verify-document', directory),
     ).toBe(true);
     expect(
-      containsDocumentTemplate('magic-links/skrift/missing-template', directory),
+      containsDocumentTemplate('magic-links/useprint/missing-template', directory),
     ).toBe(false);
   });
 });

@@ -11,7 +11,7 @@ import {
   Row,
   Tailwind,
   Text,
-} from '@skrift/components';
+} from '@useprint/components';
 
 interface ForgotPasswordProps {
   resetLink: string;
@@ -27,13 +27,13 @@ export default function ForgotPassword({
       <Head />
       <Tailwind>
         <Body className="bg-black text-white">
-          <Preview>Reset your Skrift password</Preview>
+          <Preview>Reset your UsePrint password</Preview>
           <Container className="mx-auto">
             <Heading className="font-bold text-center my-[48px] text-[32px]">
               Reset Your Password
             </Heading>
             <Text>
-              We received a request to reset your password for your Skrift
+              We received a request to reset your password for your UsePrint
               account.
             </Text>
             <Text>
@@ -53,10 +53,10 @@ export default function ForgotPassword({
                 </Button>
               </Column>
             </Row>
-            <Text className="mt-6">- Skrift team</Text>
+            <Text className="mt-6">- UsePrint team</Text>
             <Hr style={{ borderTopColor: '#404040' }} />
             <Text className="text-[#606060] font-bold">
-              Skrift, 999 React St, Document City, EC 12345
+              UsePrint, 999 React St, Document City, EC 12345
             </Text>
           </Container>
         </Body>
@@ -66,6 +66,6 @@ export default function ForgotPassword({
 }
 
 ForgotPassword.PreviewProps = {
-  resetLink: 'https://skrift.app/reset-password/123',
+  resetLink: 'https://useprint.app/reset-password/123',
   expiryTime: '1 hour',
 } satisfies ForgotPasswordProps;

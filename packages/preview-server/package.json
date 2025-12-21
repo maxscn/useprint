@@ -1,5 +1,5 @@
 {
-  "name": "@skrift/preview-server",
+  "name": "@useprint/preview-server",
   "version": "0.0.10",
   "description": "A live preview of your pdf files right in your browser.",
   "scripts": {
@@ -25,7 +25,7 @@
     "@radix-ui/react-tabs": "1.1.7",
     "@radix-ui/react-toggle-group": "1.1.6",
     "@radix-ui/react-tooltip": "1.2.3",
-    "@skrift/components": "*",
+    "@useprint/components": "*",
     "@types/node": "22.14.1",
     "@types/normalize-path": "3.0.2",
     "@types/react": "19.0.10",
@@ -79,7 +79,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/maxscn/skrift.git",
+    "url": "https://github.com/maxscn/useprint.git",
     "directory": "packages/preview-server"
   },
   "publishConfig": {

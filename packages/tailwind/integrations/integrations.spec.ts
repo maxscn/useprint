@@ -20,7 +20,7 @@ const $ = (command: string, cwd: string = path.resolve(__dirname, '..')) => {
 describe('integrations', () => {
   beforeAll(() => {
     const packageLocation = path.resolve(__dirname, '../');
-    $('yalc installations clean @skrift/tailwind', packageLocation);
+    $('yalc installations clean @useprint/tailwind', packageLocation);
     $('yalc publish', packageLocation);
   });
 

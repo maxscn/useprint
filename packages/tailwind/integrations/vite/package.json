@@ -6,12 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preinstall": "yalc add @skrift/tailwind",
+    "preinstall": "yalc add @useprint/tailwind",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@skrift/components": "workspace:*",
-    "@skrift/tailwind": "file:.yalc/@skrift/tailwind",
+    "@useprint/components": "workspace:*",
+    "@useprint/tailwind": "file:.yalc/@useprint/tailwind",
     "react": "^19",
     "react-dom": "^19"
   },

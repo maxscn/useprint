@@ -20,7 +20,7 @@ export const findUnbreakableElements = (children: React.ReactNode): UnbreakableE
 
   const traverse = (node: React.ReactNode, path: number[] = []) => {
     if (!node) return;
-    
+
     if (React.isValidElement(node)) {
       const props = node.props as any;
 
@@ -36,7 +36,7 @@ export const findUnbreakableElements = (children: React.ReactNode): UnbreakableE
       }
 
       if (typeof props.className === 'string' &&
-        props.className.includes('skrift-unbreakable')) {
+        props.className.includes('useprint-unbreakable')) {
         console.log(`🔍 Found unbreakable element at path ${path.join('-')}:`, {
           className: props.className,
           tagName: node.type,
@@ -63,7 +63,7 @@ export const findUnbreakableElements = (children: React.ReactNode): UnbreakableE
   };
 
   traverse(children);
-  console.log(`✅ FOUND ${unbreakableElements.length} UNBREAKABLE ELEMENTS:`, 
+  console.log(`✅ FOUND ${unbreakableElements.length} UNBREAKABLE ELEMENTS:`,
     unbreakableElements.map((item, index) => ({
       index,
       path: item.path,
@@ -80,20 +80,20 @@ export const findTablesWithHeaders = (children: React.ReactNode): TableWithHeade
 
   const traverse = (node: React.ReactNode, path: number[] = []) => {
     if (!node) return;
-    
+
     if (React.isValidElement(node)) {
       const props = node.props as any;
 
-      if (props['data-skrift-table'] === 'true' || 
-          (typeof props.className === 'string' && props.className.includes('skrift-table'))) {
-        
+      if (props['data-useprint-table'] === 'true' ||
+          (typeof props.className === 'string' && props.className.includes('useprint-table'))) {
+
         let header: React.ReactElement | null = null;
-        
+
         const extractHeader = (tableChildren: React.ReactNode) => {
           if (React.isValidElement(tableChildren)) {
             const childProps = tableChildren.props as any;
-            if (childProps['data-skrift-table-header'] === 'true' || 
-                (typeof childProps.className === 'string' && childProps.className.includes('skrift-table-header'))) {
+            if (childProps['data-useprint-table-header'] === 'true' ||
+                (typeof childProps.className === 'string' && childProps.className.includes('useprint-table-header'))) {
               header = tableChildren;
             }
           } else if (Array.isArray(tableChildren)) {
@@ -105,10 +105,10 @@ export const findTablesWithHeaders = (children: React.ReactNode): TableWithHeade
           extractHeader(props.children);
         }
 
-        tablesWithHeaders.push({ 
-          table: node, 
-          header, 
-          path 
+        tablesWithHeaders.push({
+          table: node,
+          header,
+          path
         });
         return;
       }
@@ -133,7 +133,7 @@ export const findTablesWithHeaders = (children: React.ReactNode): TableWithHeade
   return tablesWithHeaders;
 };
 
-export const getUnbreakableElementBounds = (container: HTMLElement, className: string = 'skrift-unbreakable'): DOMRect[] => {
+export const getUnbreakableElementBounds = (container: HTMLElement, className: string = 'useprint-unbreakable'): DOMRect[] => {
   const elements = container.querySelectorAll(`.${className}`);
   return Array.from(elements).map(el => el.getBoundingClientRect());
 };

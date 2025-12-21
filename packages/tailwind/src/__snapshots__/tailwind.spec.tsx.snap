@@ -28,7 +28,7 @@ exports[`Tailwind component > should preserve mso styles 1`] = `"<!DOCTYPE html 
 
 exports[`Tailwind component > should recognize custom responsive screen 1`] = `"<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir="ltr" lang="en"><head><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/><meta name="x-apple-disable-message-reformatting"/><!--$--><style>@media(min-width:1280px){.xl_bg-green-500{background-color:rgb(34,197,94) !important}}@media(min-width:1536px){.twoxl_bg-blue-500{background-color:rgb(59,130,246) !important}}</style></head><div class="xl_bg-green-500" style="background-color:rgb(254,226,226)">Test</div><div class="twoxl_bg-blue-500">Test</div><!--/$--></html>"`;
 
-exports[`Tailwind component > should work properly with 'no-underline' 1`] = `"<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir="ltr" lang="en"><head></head><!--$--><body><p style="font-size:14px;color:rgb(0,0,0);line-height:24px">or copy and paste this URL into your browser:<!-- --> <a class="other" href="https://skrift.app" style="color:rgb(37,99,235);text-decoration-line:none" target="_blank">https://skrift.app</a></p><p style="font-size:14px;color:rgb(0,0,0);line-height:24px">or copy and paste this URL into your browser:<!-- --> <a href="https://skrift.app" style="color:rgb(37,99,235);text-decoration-line:none" target="_blank">https://skrift.app</a></p><!--/$--></body></html>"`;
+exports[`Tailwind component > should work properly with 'no-underline' 1`] = `"<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir="ltr" lang="en"><head></head><!--$--><body><p style="font-size:14px;color:rgb(0,0,0);line-height:24px">or copy and paste this URL into your browser:<!-- --> <a class="other" href="https://useprint.app" style="color:rgb(37,99,235);text-decoration-line:none" target="_blank">https://useprint.app</a></p><p style="font-size:14px;color:rgb(0,0,0);line-height:24px">or copy and paste this URL into your browser:<!-- --> <a href="https://useprint.app" style="color:rgb(37,99,235);text-decoration-line:none" target="_blank">https://useprint.app</a></p><!--/$--></body></html>"`;
 
 exports[`Tailwind component > should work with Heading component 1`] = `"<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><!--$-->Hello<h1>My testing heading</h1>friends<!--/$-->"`;
 
@@ -36,11 +36,11 @@ exports[`Tailwind component > should work with calc() with + sign 1`] = `"<!DOCT
 
 exports[`Tailwind component > should work with class manipulation done on components 1`] = `"<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><!--$--><div style="padding:4px;color:rgb(96,165,250);background-color:rgb(239,68,68)"></div><!--/$-->"`;
 
-exports[`Tailwind component > should work with components that return children 1`] = `"<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><!--$--><div style="margin-top:100px;font-size:50px;line-height:1">Hello world</div><div style="padding:20px"><p style="font-weight:700;font-size:50px">Skrift</p></div><!--/$-->"`;
+exports[`Tailwind component > should work with components that return children 1`] = `"<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><!--$--><div style="margin-top:100px;font-size:50px;line-height:1">Hello world</div><div style="padding:20px"><p style="font-weight:700;font-size:50px">UsePrint</p></div><!--/$-->"`;
 
-exports[`Tailwind component > should work with components that use React.forwardRef 1`] = `"<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><!--$--><div style="margin-top:100px;font-size:50px;line-height:1">Hello world</div><div style="padding:20px"><p style="font-weight:700;font-size:50px">Skrift</p></div><!--/$-->"`;
+exports[`Tailwind component > should work with components that use React.forwardRef 1`] = `"<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><!--$--><div style="margin-top:100px;font-size:50px;line-height:1">Hello world</div><div style="padding:20px"><p style="font-weight:700;font-size:50px">UsePrint</p></div><!--/$-->"`;
 
-exports[`Tailwind component > should work with custom components with fragment at the root 1`] = `"<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><!--$--><div style="margin-top:100px;font-size:50px;line-height:1">Hello world</div><div style="padding:20px"><p style="font-weight:700;font-size:50px">Skrift</p></div><div style="padding:20px"><p style="font-weight:700;font-size:50px">Skrift</p></div><!--/$-->"`;
+exports[`Tailwind component > should work with custom components with fragment at the root 1`] = `"<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><!--$--><div style="margin-top:100px;font-size:50px;line-height:1">Hello world</div><div style="padding:20px"><p style="font-weight:700;font-size:50px">UsePrint</p></div><div style="padding:20px"><p style="font-weight:700;font-size:50px">UsePrint</p></div><!--/$-->"`;
 
 exports[`non-inlinable styles > should add css to <head/> and keep class names 1`] = `"<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html lang="en"><head><!--$--><style>@media(min-width:640px){.sm_bg-red-300{background-color:rgb(252,165,165) !important}.sm_hover_bg-red-200:hover{background-color:rgb(254,202,202) !important}}@media(min-width:768px){.md_bg-red-400{background-color:rgb(248,113,113) !important}}@media(min-width:1024px){.lg_bg-red-500{background-color:rgb(239,68,68) !important}}.hover_bg-red-600:hover{background-color:rgb(220,38,38) !important}.focus_bg-red-700:focus{background-color:rgb(185,28,28) !important}</style></head><body><div class="hover_bg-red-600 focus_bg-red-700 sm_bg-red-300 sm_hover_bg-red-200 md_bg-red-400 lg_bg-red-500" style="background-color:rgb(254,202,202)"></div><!--/$--></body></html>"`;
 
@@ -53,11 +53,11 @@ exports[`non-inlinable styles > should throw an error when used without a <head/
 For the media queries to work properly on rendering, they need to be added into a <style> tag inside of a <head> tag,
 the Tailwind component tried finding a <head> element but just wasn't able to find it.
 
-Make sure that you have a <head> element at some point inside of the <Tailwind> component at any depth. 
+Make sure that you have a <head> element at some point inside of the <Tailwind> component at any depth.
 This can also be our <Head> component.
 
-If you do already have a <head> element at some depth, 
-please file a bug https://github.com/maxscn/skrift/issues/new?assignees=&labels=Type%3A+Bug&projects=&template=1.bug_report.yml.]
+If you do already have a <head> element at some depth,
+please file a bug https://github.com/maxscn/useprint/issues/new?assignees=&labels=Type%3A+Bug&projects=&template=1.bug_report.yml.]
 `;
 
 exports[`non-inlinable styles > should throw error when used without the head and with media query class names only very deeply nested 1`] = `
@@ -65,11 +65,11 @@ exports[`non-inlinable styles > should throw error when used without the head an
 For the media queries to work properly on rendering, they need to be added into a <style> tag inside of a <head> tag,
 the Tailwind component tried finding a <head> element but just wasn't able to find it.
 
-Make sure that you have a <head> element at some point inside of the <Tailwind> component at any depth. 
+Make sure that you have a <head> element at some point inside of the <Tailwind> component at any depth.
 This can also be our <Head> component.
 
-If you do already have a <head> element at some depth, 
-please file a bug https://github.com/maxscn/skrift/issues/new?assignees=&labels=Type%3A+Bug&projects=&template=1.bug_report.yml.]
+If you do already have a <head> element at some depth,
+please file a bug https://github.com/maxscn/useprint/issues/new?assignees=&labels=Type%3A+Bug&projects=&template=1.bug_report.yml.]
 `;
 
 exports[`non-inlinable styles > should work with arbitrarily deep (in the React tree) <head> elements 1`] = `"<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html lang="en"><head><!--$--><style>@media(min-width:640px){.sm_bg-red-300{background-color:rgb(252,165,165) !important}}@media(min-width:768px){.md_bg-red-400{background-color:rgb(248,113,113) !important}}@media(min-width:1024px){.lg_bg-red-500{background-color:rgb(239,68,68) !important}}</style></head><body><div class="sm_bg-red-300 md_bg-red-400 lg_bg-red-500" style="background-color:rgb(254,202,202)"></div><!--/$--></body></html>"`;

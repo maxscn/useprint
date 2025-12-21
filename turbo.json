@@ -8,7 +8,7 @@
     "SPAM_ASSASSIN_HOST",
     "SPAM_ASSASSIN_PORT"
   ],
-  
+
   "tasks": {
     "build": {
       "inputs": ["packages/**"],
@@ -22,21 +22,21 @@
     "web#build": {
       "dependsOn": ["^build", "^postbuild"],
       "env": [
-        "SKRIFT_API_KEY",
+        "useprint_API_KEY",
         "NEXT_PUBLIC_SUPABASE_URL",
         "NEXT_PUBLIC_SUPABASE_ANON_KEY"
       ],
       "outputs": [".next/**", "!.next/cache/**"]
     },
-    "@skrift/preview-server#build": {
+    "@useprint/preview-server#build": {
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**"]
     },
     "demo#build": {
       "dependsOn": ["^build", "^postbuild"],
-      "outputs": [".skrift/**", "!.skrift/.next/cache/**"]
+      "outputs": [".useprint/**", "!.useprint/.next/cache/**"]
     },
-    "skrift#build": {
+    "useprint#build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },

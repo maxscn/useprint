@@ -1,4 +1,4 @@
-import { render } from '@skrift/render';
+import { render } from '@useprint/render';
 import { mapReactTree } from './map-react-tree';
 
 describe('mapReactTree()', () => {

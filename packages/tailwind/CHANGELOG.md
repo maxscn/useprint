@@ -1,4 +1,4 @@
-# @skrift/tailwind
+# @useprint/tailwind
 
 ## 0.0.4
 
@@ -78,7 +78,7 @@
 
 ### Major Changes
 
-- 60db705: Updates `tailwindcss` to latest version, but requires use of `@skrift/render@>=1.0.0`
+- 60db705: Updates `tailwindcss` to latest version, but requires use of `@useprint/render@>=1.0.0`
 
 ### Minor Changes
 
@@ -106,7 +106,7 @@
 
 ### Major Changes
 
-- a4adb29: Updates `tailwindcss` to latest version, but requires use of `@skrift/render@>=1.0.0`
+- a4adb29: Updates `tailwindcss` to latest version, but requires use of `@useprint/render@>=1.0.0`
 
 ## 0.1.0
 

@@ -1,4 +1,4 @@
-.skrift
+.useprint
 ./documents
 ./documents/static
 node_modules

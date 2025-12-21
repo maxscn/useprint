@@ -6,7 +6,7 @@ import { documentsDirectoryAbsolutePath } from './env';
 import { inter, sfMono } from './fonts';
 
 export const metadata: Metadata = {
-  title: 'Skrift',
+  title: 'UsePrint',
 };
 
 export const dynamic = 'force-dynamic';

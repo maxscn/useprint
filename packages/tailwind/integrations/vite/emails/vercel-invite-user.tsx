@@ -13,8 +13,8 @@ import {
   Row,
   Section,
   Text,
-} from '@skrift/components';
-import { Tailwind } from '@skrift/tailwind';
+} from '@useprint/components';
+import { Tailwind } from '@useprint/tailwind';
 
 interface VercelInviteUserDocumentProps {
   username?: string;

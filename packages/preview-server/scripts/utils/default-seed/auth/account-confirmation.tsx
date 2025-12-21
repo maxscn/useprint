@@ -11,7 +11,7 @@ import {
   Row,
   Tailwind,
   Text,
-} from '@skrift/components';
+} from '@useprint/components';
 
 interface AccountConfirmationProps {
   confirmLink: string;
@@ -27,14 +27,14 @@ export default function AccountConfirmation({
       <Head />
       <Tailwind>
         <Body className="bg-black text-white">
-          <Preview>Confirm your Skrift account</Preview>
+          <Preview>Confirm your UsePrint account</Preview>
           <Container className="mx-auto">
             <Heading className="font-bold text-center my-[48px] text-[32px]">
-              Welcome to Skrift!
+              Welcome to UsePrint!
             </Heading>
             <Text>
               Thank you for signing up! To complete your registration and start
-              using Skrift, please confirm your document address.
+              using UsePrint, please confirm your document address.
             </Text>
             <Text className="mb-6">
               Click the button below to verify your document. This link will expire
@@ -50,10 +50,10 @@ export default function AccountConfirmation({
                 </Button>
               </Column>
             </Row>
-            <Text className="mt-6">- Skrift team</Text>
+            <Text className="mt-6">- UsePrint team</Text>
             <Hr style={{ borderTopColor: '#404040' }} />
             <Text className="text-[#606060] font-bold">
-              Skrift, 999 React St, Document City, EC 12345
+              UsePrint, 999 React St, Document City, EC 12345
             </Text>
           </Container>
         </Body>
@@ -63,6 +63,6 @@ export default function AccountConfirmation({
 }
 
 AccountConfirmation.PreviewProps = {
-  confirmLink: 'https://skrift.app/confirm/123',
+  confirmLink: 'https://useprint.app/confirm/123',
   expiryTime: '24 hours',
 } satisfies AccountConfirmationProps;

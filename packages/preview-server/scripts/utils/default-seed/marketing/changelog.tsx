@@ -9,7 +9,7 @@ import {
   Section,
   Tailwind,
   Text,
-} from '@skrift/components';
+} from '@useprint/components';
 
 interface ChangelogProps {
   receiver: string;
@@ -66,10 +66,10 @@ export default function Changelog({ receiver, date, changes }: ChangelogProps) {
             {changes.fixes && changes.fixes.length > 0 ? (
               <Changes title="Fixes" content={changes.fixes} />
             ) : null}
-            <Text className="mt-6">- Skrift team</Text>
+            <Text className="mt-6">- UsePrint team</Text>
             <Hr style={{ borderTopColor: '#404040' }} />
             <Text className="text-[#606060] font-bold">
-              Skrift, 999 React St, Document City, EC 12345
+              UsePrint, 999 React St, Document City, EC 12345
             </Text>
           </Container>
         </Body>

@@ -11,7 +11,7 @@ import {
   Row,
   Tailwind,
   Text,
-} from '@skrift/components';
+} from '@useprint/components';
 
 interface PaymentOverdueProps {
   customerName: string;
@@ -62,10 +62,10 @@ export default function PaymentOverdue({
               If you have already made this payment, please disregard this
               message.
             </Text>
-            <Text className="mt-6">- Skrift team</Text>
+            <Text className="mt-6">- UsePrint team</Text>
             <Hr style={{ borderTopColor: '#404040' }} />
             <Text className="text-[#606060] font-bold">
-              Skrift, 999 React St, Document City, EC 12345
+              UsePrint, 999 React St, Document City, EC 12345
             </Text>
           </Container>
         </Body>
@@ -78,5 +78,5 @@ PaymentOverdue.PreviewProps = {
   customerName: 'Jane Smith',
   amount: '$99.00',
   dueDate: 'June 1st, 2024',
-  invoiceLink: 'https://skrift.app/invoice/123',
+  invoiceLink: 'https://useprint.app/invoice/123',
 } satisfies PaymentOverdueProps;

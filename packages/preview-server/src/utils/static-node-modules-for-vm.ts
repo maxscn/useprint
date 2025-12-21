@@ -39,7 +39,7 @@ import v8 from 'node:v8';
 import vm from 'node:vm';
 import workerThreads from 'node:worker_threads';
 import zlib from 'node:zlib';
-// See https://github.com/maxscn/skrift/issues/1841#issuecomment-2589985562
+// See https://github.com/maxscn/useprint/issues/1841#issuecomment-2589985562
 import punycode from 'module-punycode';
 
 /**

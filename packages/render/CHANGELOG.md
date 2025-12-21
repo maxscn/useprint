@@ -1,4 +1,4 @@
-# @skrift/render
+# @useprint/render
 
 ## 0.0.3
 
@@ -169,7 +169,7 @@
   2. Being ready for future React API deprecations
   3. Support for Suspense which allows for using async inside components
 
-  See https://github.com/maxscn/skrift/discussions/1144 for more info.
+  See https://github.com/maxscn/useprint/discussions/1144 for more info.
 
   ## How to upgrade
 
@@ -194,7 +194,7 @@
   2. Being ready for future React API deprecations
   3. Support for Suspense which allows for using async inside components
 
-  See https://github.com/maxscn/skrift/discussions/1144 for more info.
+  See https://github.com/maxscn/useprint/discussions/1144 for more info.
 
   ## How to upgrade
 

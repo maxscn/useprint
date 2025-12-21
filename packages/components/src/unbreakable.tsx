@@ -6,24 +6,24 @@ interface UnbreakableProps {
   style?: React.CSSProperties;
 }
 
-export const Unbreakable: React.FC<UnbreakableProps> = ({ 
-  children, 
-  className = '', 
+export const Unbreakable: React.FC<UnbreakableProps> = ({
+  children,
+  className = '',
   style = {},
-  ...props 
+  ...props
 }) => {
   const unbreakableStyle: React.CSSProperties = {
     breakInside: 'avoid',
     breakAfter: 'auto',
     breakBefore: 'auto',
     pageBreakInside: 'avoid',
-    
+
     ...style
   };
 
   return (
-    <div 
-      className={`skrift-unbreakable ${className}`}
+    <div
+      className={`useprint-unbreakable ${className}`}
       style={unbreakableStyle}
       data-unbreakable="true"
       {...props}

@@ -1,6 +1,6 @@
-import { 
-  applyMarginToIframeSrcDoc, 
-  processIframeElements 
+import {
+  applyMarginToIframeSrcDoc,
+  processIframeElements
 } from './iframe-processing';
 import type { UnbreakableElement } from './element-analysis';
 import { setupDOM, cleanupDOM } from './test-setup';
@@ -9,7 +9,7 @@ describe('iframe-processing', () => {
   beforeAll(() => {
     setupDOM();
   });
-  
+
   beforeEach(() => {
     cleanupDOM();
   });
@@ -19,28 +19,28 @@ describe('iframe-processing', () => {
       const srcDoc = `
         <html>
           <body>
-            <div class="skrift-unbreakable">Content</div>
+            <div class="useprint-unbreakable">Content</div>
           </body>
         </html>
       `;
 
       const result = applyMarginToIframeSrcDoc(srcDoc, 50);
-      
+
       expect(result).toContain('margin-top: 50px !important');
-      expect(result).toContain('skrift-unbreakable');
+      expect(result).toContain('useprint-unbreakable');
     });
 
     it('replaces existing margin-top', () => {
       const srcDoc = `
         <html>
           <body>
-            <div class="skrift-unbreakable" style="margin-top: 10px; color: red;">Content</div>
+            <div class="useprint-unbreakable" style="margin-top: 10px; color: red;">Content</div>
           </body>
         </html>
       `;
 
       const result = applyMarginToIframeSrcDoc(srcDoc, 50);
-      
+
       expect(result).toContain('margin-top: 50px !important');
       expect(result).toContain('color: red');
       expect(result).not.toContain('margin-top: 10px');
@@ -50,13 +50,13 @@ describe('iframe-processing', () => {
       const srcDoc = `
         <html>
           <body>
-            <div class="skrift-unbreakable" style="color: blue; padding: 10px;">Content</div>
+            <div class="useprint-unbreakable" style="color: blue; padding: 10px;">Content</div>
           </body>
         </html>
       `;
 
       const result = applyMarginToIframeSrcDoc(srcDoc, 30);
-      
+
       expect(result).toContain('color: blue');
       expect(result).toContain('padding: 10px');
       expect(result).toContain('margin-top: 30px !important');
@@ -72,14 +72,14 @@ describe('iframe-processing', () => {
       `;
 
       const result = applyMarginToIframeSrcDoc(srcDoc, 50);
-      
+
       expect(result).toBe(srcDoc);
     });
 
     it('handles empty srcDoc', () => {
       const srcDoc = '';
       const result = applyMarginToIframeSrcDoc(srcDoc, 50);
-      
+
       expect(result).toBe(srcDoc);
     });
 
@@ -87,13 +87,13 @@ describe('iframe-processing', () => {
       const srcDoc = `
         <html>
           <body>
-            <div class="skrift-unbreakable">Content</div>
+            <div class="useprint-unbreakable">Content</div>
           </body>
         </html>
       `;
 
       const result = applyMarginToIframeSrcDoc(srcDoc, 25);
-      
+
       expect(result).toContain('margin-top: 25px !important');
     });
   });
@@ -104,7 +104,7 @@ describe('iframe-processing', () => {
         {
           element: {} as any,
           isIframe: true,
-          srcDoc: '<div class="skrift-unbreakable">Content</div>',
+          srcDoc: '<div class="useprint-unbreakable">Content</div>',
           path: [0]
         },
         {
@@ -116,16 +116,16 @@ describe('iframe-processing', () => {
 
       // Test the synchronous filtering part
       const iframeElements = unbreakableElements.filter(item => item.isIframe && item.srcDoc);
-      
+
       expect(iframeElements).toHaveLength(1);
       expect(iframeElements[0]?.isIframe).toBe(true);
-      expect(iframeElements[0]?.srcDoc).toBe('<div class="skrift-unbreakable">Content</div>');
+      expect(iframeElements[0]?.srcDoc).toBe('<div class="useprint-unbreakable">Content</div>');
     });
 
     it('handles empty unbreakable elements array', () => {
       const unbreakableElements: UnbreakableElement[] = [];
       const iframeElements = unbreakableElements.filter(item => item.isIframe && item.srcDoc);
-      
+
       expect(iframeElements).toHaveLength(0);
     });
 
@@ -145,7 +145,7 @@ describe('iframe-processing', () => {
       ];
 
       const iframeElements = unbreakableElements.filter(item => item.isIframe && item.srcDoc);
-      
+
       expect(iframeElements).toHaveLength(0);
     });
 
@@ -160,7 +160,7 @@ describe('iframe-processing', () => {
       ];
 
       const iframeElements = unbreakableElements.filter(item => item.isIframe && item.srcDoc);
-      
+
       expect(iframeElements).toHaveLength(0);
     });
   });

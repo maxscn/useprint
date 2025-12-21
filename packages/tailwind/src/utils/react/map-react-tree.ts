@@ -42,7 +42,7 @@ export function mapReactTree(
             : (processed.type as React.FC);
 
         const rendered = OriginalComponent(processed.props);
-        // @ts-expect-error - adding this for now because it was initial from skrift
+        // @ts-expect-error - adding this for now because it was initial from useprint
         const mappedRenderedNode = mapReactTree(rendered, process);
 
         return mappedRenderedNode;

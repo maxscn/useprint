@@ -1,7 +1,7 @@
 {
-  "name": "skrift-monorepo",
+  "name": "useprint-monorepo",
   "version": "0.0.0",
-  "description": "A self-hostable service for creating PDF documents.",
+  "description": "Create PDF documents using your own React components.",
   "main": "index.js",
   "workspaces": [
     "packages/*",
@@ -14,14 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maxscn/skrift.git"
+    "url": "git+https://github.com/maxscn/useprint.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/maxscn/skrift/issues"
+    "url": "https://github.com/maxscn/useprint/issues"
   },
-  "homepage": "https://github.com/maxscn/skrift#readme",
+  "homepage": "https://github.com/maxscn/useprint#readme",
   "packageManager": "bun@1.2.19",
   "devDependencies": {
     "@happy-dom/global-registrator": "^18.0.1",

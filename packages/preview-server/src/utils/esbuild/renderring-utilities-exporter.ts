@@ -5,7 +5,7 @@ import { escapeStringForRegex } from './escape-string-for-regex';
 
 /**
  * Made to export the `render` function out of the user's document template
- * so that issues like https://github.com/maxscn/skrift/issues/649 don't
+ * so that issues like https://github.com/maxscn/useprint/issues/649 don't
  * happen.
  *
  * This also exports the `createElement` from the user's React version as well
@@ -28,7 +28,7 @@ export const renderingUtilitiesExporter = (documentTemplates: string[]) => ({
       async ({ path: pathToFile }) => {
         return {
           contents: `${await fs.readFile(pathToFile, 'utf8')};
-          export { render } from 'skrift-module-that-will-export-render'
+          export { render } from 'useprint-module-that-will-export-render'
           export { createElement as reactDocumentCreateReactElement } from 'react';
         `,
           loader: path.extname(pathToFile).slice(1) as Loader,
@@ -37,7 +37,7 @@ export const renderingUtilitiesExporter = (documentTemplates: string[]) => ({
     );
 
     b.onResolve(
-      { filter: /^skrift-module-that-will-export-render$/ },
+      { filter: /^useprint-module-that-will-export-render$/ },
       async (args) => {
         const options: ResolveOptions = {
           kind: 'import-statement',
@@ -45,16 +45,16 @@ export const renderingUtilitiesExporter = (documentTemplates: string[]) => ({
           resolveDir: args.resolveDir,
           namespace: args.namespace,
         };
-        let result = await b.resolve('@skrift/render', options);
+        let result = await b.resolve('@useprint/render', options);
         if (result.errors.length === 0) {
           return result;
         }
 
-        // If @skrift/render does not exist, resolve to @skrift/components
-        result = await b.resolve('@skrift/components', options);
+        // If @useprint/render does not exist, resolve to @useprint/components
+        result = await b.resolve('@useprint/components', options);
         if (result.errors.length > 0 && result.errors[0]) {
           result.errors[0].text =
-            "Failed trying to import `render` from either `@skrift/render` or `@skrift/components` to be able to render your document template.\n Maybe you don't have either of them installed?";
+            "Failed trying to import `render` from either `@useprint/render` or `@useprint/components` to be able to render your document template.\n Maybe you don't have either of them installed?";
         }
         return result;
       },

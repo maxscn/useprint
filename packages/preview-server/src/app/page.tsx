@@ -14,7 +14,7 @@ const Home = () => {
       <div className="w-full h-full flex items-center justify-center p-8">
         <div className="-mt-10 relative max-w-lg flex flex-col items-center gap-3 text-center">
           <Heading as="h2" size="6" weight="medium">
-            Welcome to Skrift
+            Welcome to UsePrint
           </Heading>
           <Text as="p">
             To start developing your documents, you can create a<br />
@@ -23,7 +23,7 @@ const Home = () => {
             folder.
           </Text>
           <Button asChild className="mt-3" size="3">
-            <Link href="https://skrift.app/docs">Check the docs</Link>
+            <Link href="https://useprint.app/docs">Check the docs</Link>
           </Button>
         </div>
       </div>

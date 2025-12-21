@@ -1,10 +1,10 @@
-// import { Button } from '@skrift/button';
-// import { Head } from '@skrift/head';
-// import { Heading } from '@skrift/heading';
-// import { Hr } from '@skrift/hr';
-// import { Html } from '@skrift/html';
-// import { Link } from '@skrift/link';
-import { render } from '@skrift/render';
+// import { Button } from '@useprint/button';
+// import { Head } from '@useprint/head';
+// import { Heading } from '@useprint/heading';
+// import { Hr } from '@useprint/hr';
+// import { Html } from '@useprint/html';
+// import { Link } from '@useprint/link';
+import { render } from '@useprint/render';
 import React from 'react';
 import type { TailwindConfig } from '.';
 import { Tailwind } from '.';
@@ -60,18 +60,18 @@ import { Tailwind } from '.';
 //               or copy and paste this URL into your browser:{' '}
 //               <Link
 //                 className="other text-blue-600 no-underline"
-//                 href="https://skrift.app"
+//                 href="https://useprint.app"
 //               >
-//                 https://skrift.app
+//                 https://useprint.app
 //               </Link>
 //             </p>
 //             <p className="text-[14px] text-black leading-[24px]">
 //               or copy and paste this URL into your browser:{' '}
 //               <Link
 //                 className="text-blue-600 no-underline"
-//                 href="https://skrift.app"
+//                 href="https://useprint.app"
 //               >
-//                 https://skrift.app
+//                 https://useprint.app
 //               </Link>
 //             </p>
 //           </Tailwind>
@@ -111,7 +111,7 @@ import { Tailwind } from '.';
 //   //     <Html>
 //   //       <Tailwind>
 //   //         <Head/>
-//   //         <SharedDataContext.Provider value={{ name: 'Skrift' }}>
+//   //         <SharedDataContext.Provider value={{ name: 'UsePrint' }}>
 //   //           <body className="bg-slate-900 text-gray-200">
 //   //             <IsGreat/>
 //   //           </body>
@@ -143,10 +143,10 @@ import { Tailwind } from '.';
 //       return (
 //         <>
 //           <div className="p-[20px]">
-//             <p className="font-bold text-[50px]">Skrift</p>
+//             <p className="font-bold text-[50px]">UsePrint</p>
 //           </div>
 //           <div className="p-[20px]">
-//             <p className="font-bold text-[50px]">Skrift</p>
+//             <p className="font-bold text-[50px]">UsePrint</p>
 //           </div>
 //         </>
 //       );
@@ -180,7 +180,7 @@ import { Tailwind } from '.';
 //     const Brand = () => {
 //       return (
 //         <div className="p-[20px]">
-//           <p className="font-bold text-[50px]">Skrift</p>
+//           <p className="font-bold text-[50px]">UsePrint</p>
 //         </div>
 //       );
 //     };
@@ -225,7 +225,7 @@ import { Tailwind } from '.';
 //           ref={ref as React.LegacyRef<HTMLDivElement>}
 //           {...props}
 //         >
-//           <p className="font-bold text-[50px]">Skrift</p>
+//           <p className="font-bold text-[50px]">UsePrint</p>
 //         </div>
 //       );
 //     });
@@ -337,7 +337,7 @@ import { Tailwind } from '.';
 
 describe('non-inlinable styles', () => {
   /*
-    This test is because of https://github.com/maxscn/skrift/issues/1112
+    This test is because of https://github.com/maxscn/useprint/issues/1112
     which was being caused because we required to, either have our <Head> component,
     or a <head> element directly inside the <Tailwind> component for media queries to be applied
     onto. The problem with this approach was that the check to see if an element was an instance of

@@ -92,7 +92,7 @@ exports[`getDocumentComponent() > with a demo document template 1`] = `
                       role="presentation">
                       <tbody style="width:100%">
                         <tr style="width:100%">
-                          <td align="right" data-id="__skrift-column">
+                          <td align="right" data-id="__useprint-column">
                             <img
                               alt="alanturing&#x27;s profile picture"
                               height="64"
@@ -100,7 +100,7 @@ exports[`getDocumentComponent() > with a demo document template 1`] = `
                               style="border-radius:9999px;display:block;outline:none;border:none;text-decoration:none"
                               width="64" />
                           </td>
-                          <td align="center" data-id="__skrift-column">
+                          <td align="center" data-id="__useprint-column">
                             <img
                               alt="Arrow indicating invitation"
                               height="9"
@@ -108,7 +108,7 @@ exports[`getDocumentComponent() > with a demo document template 1`] = `
                               style="display:block;outline:none;border:none;text-decoration:none"
                               width="12" />
                           </td>
-                          <td align="left" data-id="__skrift-column">
+                          <td align="left" data-id="__useprint-column">
                             <img
                               alt="Enigma team logo"
                               height="64"

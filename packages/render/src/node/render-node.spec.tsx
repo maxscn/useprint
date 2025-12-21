@@ -48,7 +48,7 @@ describe('render on node environments', () => {
     vi.resetAllMocks();
   });
 
-  // This is a test to ensure we have no regressions for https://github.com/maxscn/skrift/issues/1667
+  // This is a test to ensure we have no regressions for https://github.com/maxscn/useprint/issues/1667
   // The error only happens with React 18, and thus is tested on React 18.
   it('should handle characters with a higher byte count gracefully in React 18', async () => {
     const actualOutput = await render(

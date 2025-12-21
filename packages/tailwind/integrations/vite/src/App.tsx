@@ -1,4 +1,4 @@
-import { render } from '@skrift/components';
+import { render } from '@useprint/components';
 import { VercelInviteUserDocument } from '../documents/vercel-invite-user';
 
 function App() {

@@ -42,7 +42,7 @@ describe('render on the edge', () => {
     vi.resetAllMocks();
   });
 
-  // This is a test to ensure we have no regressions for https://github.com/maxscn/skrift/issues/1667
+  // This is a test to ensure we have no regressions for https://github.com/maxscn/useprint/issues/1667
   it('should handle characters with a higher byte count gracefully in React 18', async () => {
     const actualOutput = await render(
       <>

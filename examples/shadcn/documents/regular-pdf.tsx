@@ -7,7 +7,7 @@ import {
 	Tailwind,
 	Unbreakable,
 	usePageSize,
-} from "@skrift/components";
+} from "@useprint/components";
 
 interface RegularPDFProps {
 	// pageSize is automatically provided by the server-side rendering

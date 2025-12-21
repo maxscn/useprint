@@ -59,7 +59,7 @@ describe('render on the browser environment', () => {
     );
   });
 
-  // This is a test to ensure we have no regressions for https://github.com/maxscn/skrift/issues/1667
+  // This is a test to ensure we have no regressions for https://github.com/maxscn/useprint/issues/1667
   it('should handle characters with a higher byte count gracefully', async () => {
     const actualOutput = await render(
       <>
@@ -140,7 +140,7 @@ describe('render on the browser environment', () => {
     expect(renderedTemplate).toMatchSnapshot();
   });
 
-  // See https://github.com/maxscn/skrift/issues/2263
+  // See https://github.com/maxscn/useprint/issues/2263
   it('should throw error of rendering an invalid element instead of writing them into a template tag', async () => {
     // @ts-ignore we know this is not correct, and we want to test the error handling for it
     const element = createElement(undefined);

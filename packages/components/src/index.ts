@@ -1,5 +1,5 @@
-export * from "@skrift/render";
-export * from "@skrift/tailwind";
+export * from "@useprint/render";
+export * from "@useprint/tailwind";
 export * from "./body";
 export * from "./document";
 export * from "./head";

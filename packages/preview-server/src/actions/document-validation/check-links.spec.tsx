@@ -4,9 +4,9 @@ test('checkLinks()', async () => {
   const results: LinkCheckingResult[] = [];
   const html = `<div>
   <a href="/">Root</a>
-  <a href="https://skrift.com">Skrift</a>
+  <a href="https://useprint.com">UsePrint</a>
   <a href="https://notion.so">Notion</a>
-  <a href="http://skrift.app">Skrift unsafe</a>
+  <a href="http://useprint.app">UsePrint unsafe</a>
 </div>`;
   const stream = await checkLinks(html);
   const reader = stream.getReader();
@@ -57,7 +57,7 @@ test('checkLinks()', async () => {
           },
         },
       ],
-      link: 'https://skrift.com',
+      link: 'https://useprint.com',
     },
     {
       status: 'warning',
@@ -107,7 +107,7 @@ test('checkLinks()', async () => {
           passed: false,
         },
       ],
-      link: 'http://skrift.app',
+      link: 'http://useprint.app',
     },
   ] satisfies LinkCheckingResult[]);
 });

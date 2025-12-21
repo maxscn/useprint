@@ -3,7 +3,7 @@ import {
 	PAGE_SIZES,
 	type PageSize,
 	type ViewDimensions,
-} from "@skrift/components";
+} from "@useprint/components";
 import * as React from "react";
 import { cn } from "../../utils";
 import { IconArrowDown } from "../icons/icon-arrow-down";

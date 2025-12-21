@@ -1,7 +1,7 @@
 import React from 'react';
-import { 
-  findUnbreakableElements, 
-  findTablesWithHeaders, 
+import {
+  findUnbreakableElements,
+  findTablesWithHeaders,
   getUnbreakableElementBounds,
   checkElementPageSpan,
   analyzePageSpans
@@ -12,20 +12,20 @@ describe('element-analysis', () => {
   beforeAll(() => {
     setupDOM();
   });
-  
+
   beforeEach(() => {
     cleanupDOM();
   });
   describe('findUnbreakableElements', () => {
-    it('finds elements with skrift-unbreakable class', () => {
+    it('finds elements with useprint-unbreakable class', () => {
       const children = React.createElement('div', {}, [
-        React.createElement('div', { key: '1', className: 'skrift-unbreakable' }, 'Unbreakable 1'),
+        React.createElement('div', { key: '1', className: 'useprint-unbreakable' }, 'Unbreakable 1'),
         React.createElement('div', { key: '2', className: 'normal' }, 'Normal'),
-        React.createElement('div', { key: '3', className: 'skrift-unbreakable other-class' }, 'Unbreakable 2')
+        React.createElement('div', { key: '3', className: 'useprint-unbreakable other-class' }, 'Unbreakable 2')
       ]);
 
       const result = findUnbreakableElements(children);
-      
+
       expect(result).toHaveLength(2);
       expect(result[0]?.path).toEqual([0]);
       expect(result[1]?.path).toEqual([2]);
@@ -33,29 +33,29 @@ describe('element-analysis', () => {
 
     it('finds iframe elements with srcDoc', () => {
       const children = React.createElement('div', {}, [
-        React.createElement('iframe', { 
-          key: '1', 
-          srcDoc: '<div class="skrift-unbreakable">Content</div>' 
+        React.createElement('iframe', {
+          key: '1',
+          srcDoc: '<div class="useprint-unbreakable">Content</div>'
         }),
         React.createElement('iframe', { key: '2' }) // No srcDoc
       ]);
 
       const result = findUnbreakableElements(children);
-      
+
       expect(result).toHaveLength(1);
       expect(result[0]?.isIframe).toBe(true);
-      expect(result[0]?.srcDoc).toBe('<div class="skrift-unbreakable">Content</div>');
+      expect(result[0]?.srcDoc).toBe('<div class="useprint-unbreakable">Content</div>');
     });
 
     it('handles nested elements', () => {
-      const children = React.createElement('div', {}, 
-        React.createElement('div', {}, 
-          React.createElement('div', { className: 'skrift-unbreakable' }, 'Nested')
+      const children = React.createElement('div', {},
+        React.createElement('div', {},
+          React.createElement('div', { className: 'useprint-unbreakable' }, 'Nested')
         )
       );
 
       const result = findUnbreakableElements(children);
-      
+
       expect(result).toHaveLength(1);
       expect(result[0]?.path).toEqual([0, 0]);
     });
@@ -67,12 +67,12 @@ describe('element-analysis', () => {
 
     it('handles array of children', () => {
       const children = [
-        React.createElement('div', { key: '1', className: 'skrift-unbreakable' }, 'First'),
-        React.createElement('div', { key: '2', className: 'skrift-unbreakable' }, 'Second')
+        React.createElement('div', { key: '1', className: 'useprint-unbreakable' }, 'First'),
+        React.createElement('div', { key: '2', className: 'useprint-unbreakable' }, 'Second')
       ];
 
       const result = findUnbreakableElements(children);
-      
+
       expect(result).toHaveLength(2);
       expect(result[0]?.path).toEqual([0]);
       expect(result[1]?.path).toEqual([1]);
@@ -80,48 +80,48 @@ describe('element-analysis', () => {
   });
 
   describe('findTablesWithHeaders', () => {
-    it('finds tables with data-skrift-table attribute', () => {
-      const children = React.createElement('div', {}, 
-        React.createElement('table', { 
-          'data-skrift-table': 'true' 
+    it('finds tables with data-useprint-table attribute', () => {
+      const children = React.createElement('div', {},
+        React.createElement('table', {
+          'data-useprint-table': 'true'
         }, [
-          React.createElement('thead', { 
+          React.createElement('thead', {
             key: 'header',
-            'data-skrift-table-header': 'true' 
+            'data-useprint-table-header': 'true'
           }, 'Header'),
           React.createElement('tbody', { key: 'body' }, 'Body')
         ])
       );
 
       const result = findTablesWithHeaders(children);
-      
+
       expect(result).toHaveLength(1);
       expect(result[0]?.header).not.toBeNull();
       expect(result[0]?.path).toEqual([0]);
     });
 
-    it('finds tables with skrift-table class', () => {
-      const children = React.createElement('div', { className: 'skrift-table' }, [
-        React.createElement('div', { 
+    it('finds tables with useprint-table class', () => {
+      const children = React.createElement('div', { className: 'useprint-table' }, [
+        React.createElement('div', {
           key: 'header',
-          className: 'skrift-table-header' 
+          className: 'useprint-table-header'
         }, 'Header'),
         React.createElement('div', { key: 'body' }, 'Body')
       ]);
 
       const result = findTablesWithHeaders(children);
-      
+
       expect(result).toHaveLength(1);
       expect(result[0]?.header).not.toBeNull();
     });
 
     it('handles tables without headers', () => {
-      const children = React.createElement('table', { 
-        'data-skrift-table': 'true' 
+      const children = React.createElement('table', {
+        'data-useprint-table': 'true'
       }, React.createElement('tbody', {}, 'Body only'));
 
       const result = findTablesWithHeaders(children);
-      
+
       expect(result).toHaveLength(1);
       expect(result[0]?.header).toBeNull();
     });
@@ -130,7 +130,7 @@ describe('element-analysis', () => {
       const children = React.createElement('div', {}, 'Not a table');
 
       const result = findTablesWithHeaders(children);
-      
+
       expect(result).toHaveLength(0);
     });
   });
@@ -140,20 +140,20 @@ describe('element-analysis', () => {
     it('returns bounds for elements with className', () => {
       const container = document.createElement('div');
       const element1 = document.createElement('div');
-      element1.className = 'skrift-unbreakable';
+      element1.className = 'useprint-unbreakable';
       const element2 = document.createElement('div');
-      element2.className = 'skrift-unbreakable other';
-      
+      element2.className = 'useprint-unbreakable other';
+
       container.appendChild(element1);
       container.appendChild(element2);
-      
+
       // Mock getBoundingClientRect
       const mockRect = { top: 0, left: 0, width: 100, height: 50, bottom: 50, right: 100 } as DOMRect;
       element1.getBoundingClientRect = () => mockRect;
       element2.getBoundingClientRect = () => mockRect;
 
       const result = getUnbreakableElementBounds(container);
-      
+
       expect(result).toHaveLength(2);
       expect(result[0]).toEqual(mockRect);
     });
@@ -161,7 +161,7 @@ describe('element-analysis', () => {
     it('handles empty container', () => {
       const container = document.createElement('div');
       const result = getUnbreakableElementBounds(container);
-      
+
       expect(result).toHaveLength(0);
     });
 
@@ -170,12 +170,12 @@ describe('element-analysis', () => {
       const element = document.createElement('div');
       element.className = 'custom-class';
       container.appendChild(element);
-      
+
       const mockRect = { top: 0, left: 0, width: 100, height: 50, bottom: 50, right: 100 } as DOMRect;
       element.getBoundingClientRect = () => mockRect;
 
       const result = getUnbreakableElementBounds(container, 'custom-class');
-      
+
       expect(result).toHaveLength(1);
     });
   });
@@ -207,7 +207,7 @@ describe('element-analysis', () => {
       };
 
       const result = checkElementPageSpan(elementBounds, containerBounds, 1000);
-      
+
       expect(result.spansMultiplePages).toBe(false);
       expect(result.startPage).toBe(1);
       expect(result.endPage).toBe(1);
@@ -228,7 +228,7 @@ describe('element-analysis', () => {
       };
 
       const result = checkElementPageSpan(elementBounds, containerBounds, 1000);
-      
+
       expect(result.spansMultiplePages).toBe(true);
       expect(result.startPage).toBe(1);
       expect(result.endPage).toBe(2);
@@ -249,7 +249,7 @@ describe('element-analysis', () => {
       };
 
       const result = checkElementPageSpan(elementBounds, containerBounds, 1000);
-      
+
       expect(result.spansMultiplePages).toBe(false);
       expect(result.startPage).toBe(2);
       expect(result.endPage).toBe(2);
@@ -296,7 +296,7 @@ describe('element-analysis', () => {
       ];
 
       const result = analyzePageSpans(allBounds, containerBounds, 1000);
-      
+
       expect(result).toHaveLength(1);
       expect(result[0]?.index).toBe(1);
       expect(result[0]?.spanInfo.spansMultiplePages).toBe(true);
@@ -318,13 +318,13 @@ describe('element-analysis', () => {
       ];
 
       const result = analyzePageSpans(allBounds, containerBounds, 1000);
-      
+
       expect(result).toHaveLength(0);
     });
 
     it('handles empty bounds array', () => {
       const result = analyzePageSpans([], containerBounds, 1000);
-      
+
       expect(result).toHaveLength(0);
     });
   });

@@ -1,15 +1,15 @@
-<div align="center"><strong>@skrift/preview-server</strong></div>
+<div align="center"><strong>@useprint/preview-server</strong></div>
 <div align="center">A live preview of your documents right in your browser.</div>
 <br />
 <div align="center">
-<a href="https://skrift.app">Website</a> 
+<a href="https://useprint.app">Website</a> 
 <span> · </span>
-<a href="https://github.com/maxscn/skrift">GitHub</a> 
+<a href="https://github.com/maxscn/useprint">GitHub</a> 
 <span> · </span>
-<a href="https://skrift.app/discord">Discord</a>
+<a href="https://useprint.app/discord">Discord</a>
 </div>
 
-This package is used to store the preview server, it is also published and versioned so that it can be installed when the [CLI](../skrift) is being used.
+This package is used to store the preview server, it is also published and versioned so that it can be installed when the [CLI](../useprint) is being used.
 
 ## Development workflow
 
@@ -32,4 +32,3 @@ This is somewhat equivalent to `next dev` and does not support hot reloading for
 ### 3. Open in your browser
 
 Go to http://localhost:3000
-

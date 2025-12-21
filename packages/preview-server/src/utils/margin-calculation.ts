@@ -85,11 +85,11 @@ export const calculateMargins = (
   })));
   console.log('Iframe elements data count:', iframeElementsData.length);
   console.log('Iframe elements data:', iframeElementsData);
-  
+
   const unbreakableMargins = new Map<string, number>();
   const iframeMargins = new Map<string, number>();
-  const domUnbreakables = Array.from(measureRef.current!.querySelectorAll('.skrift-unbreakable'));
-  
+  const domUnbreakables = Array.from(measureRef.current!.querySelectorAll('.useprint-unbreakable'));
+
   console.log('DOM unbreakables found:', domUnbreakables.length);
   console.log('DOM unbreakables elements:', domUnbreakables.map((el, i) => ({
     index: i,
@@ -97,14 +97,14 @@ export const calculateMargins = (
     className: el.className,
     textContent: el.textContent?.substring(0, 50) + '...'
   })));
-  
+
   // Let's see what IS in the measurement div
   console.log('=== MEASUREMENT DIV CONTENT DEBUG ===');
   console.log('Measurement div exists:', !!measureRef.current);
   console.log('Measurement div innerHTML length:', measureRef.current?.innerHTML?.length);
   console.log('All elements in measurement div:', measureRef.current?.querySelectorAll('*').length);
-  console.log('Elements with class containing "skrift":', Array.from(measureRef.current?.querySelectorAll('*') || [])
-    .filter(el => el.className && el.className.includes('skrift'))
+  console.log('Elements with class containing "useprint":', Array.from(measureRef.current?.querySelectorAll('*') || [])
+    .filter(el => el.className && el.className.includes('useprint'))
     .map(el => ({
       tagName: el.tagName,
       className: el.className,
@@ -113,7 +113,7 @@ export const calculateMargins = (
   console.log('All classes in measurement div:', Array.from(new Set(
     Array.from(measureRef.current?.querySelectorAll('*') || [])
       .map(el => el.className)
-      .filter(className => className && className.includes('skrift'))
+      .filter(className => className && className.includes('useprint'))
   )));
 
   const domToReactElementMap = new Map<Element, { path: number[], isIframe: boolean }>();
@@ -142,7 +142,7 @@ export const calculateMargins = (
         console.warn(`  -> No DOM element found for React element ${reactIndex}`);
       }
     });
-  
+
   console.log('Final DOM to React mapping size:', domToReactElementMap.size);
 
   spanningElements.forEach((item, itemIndex) => {
@@ -179,13 +179,13 @@ export const calculateMargins = (
         iframeDataIndex: iframeDataIndex,
         availableIframeData: iframeElementsData.length
       });
-      
+
       const iframeElementData = iframeElementsData[iframeDataIndex];
       console.log('Iframe element data found:', {
         exists: !!iframeElementData,
         data: iframeElementData
       });
-      
+
       if (iframeElementData && iframeElementData.iframeContainer && iframeElementData.elementIndex !== undefined) {
         const existingMarginTop = iframeElementData.existingMarginTop || 0;
         const adjustedMarginNeeded = baseMarginNeeded + existingMarginTop;
@@ -209,9 +209,9 @@ export const calculateMargins = (
             pathString: iframeContainerPath,
             elementIndex: iframeElementData.elementIndex
           });
-          
+
           const elementKey = iframeContainerPath ? `${iframeContainerPath}-element-${iframeElementData.elementIndex}` : `element-${iframeElementData.elementIndex}`;
-          
+
           const existingMargin = iframeMargins.get(elementKey) || 0;
           if (adjustedMarginNeeded > existingMargin) {
             iframeMargins.set(elementKey, adjustedMarginNeeded);
@@ -236,11 +236,11 @@ export const calculateMargins = (
         className: domElement?.className,
         textContent: domElement?.textContent?.substring(0, 50) + '...'
       });
-      
+
       if (!domElement) {
         console.warn(`❌ CRITICAL: DOM element at index ${item.index} not found. This suggests the unbreakable element is in an iframe.`);
       }
-      
+
       if (domElement) {
         const reactElementInfo = domToReactElementMap.get(domElement);
         console.log('React element info found:', {
@@ -304,10 +304,10 @@ export const applyMarginToUnbreakableElements = (
   console.log('=== APPLY MARGIN TO UNBREAKABLE ELEMENTS START ===');
   console.log('Unbreakable margins map:', Array.from(unbreakableMargins.entries()));
   console.log('Iframe margins map:', Array.from(iframeMargins.entries()));
-  
+
   const applyMargin = (node: React.ReactNode, path: number[] = []): React.ReactNode => {
     if (!node) return node;
-    
+
     if (React.isValidElement(node)) {
       const pathKey = path.join('-');
       const props = node.props as any;
@@ -316,16 +316,16 @@ export const applyMarginToUnbreakableElements = (
         // Check if any iframe element margins apply to this iframe
         console.log(`🔍 CHECKING IFRAME for margins at path "${pathKey}"`);
         console.log('Available iframe margins:', Array.from(iframeMargins.entries()));
-        
+
         const applicableMargins = new Map<number, number>();
-        
+
         // Check for margins - handle both empty path case and regular path case
         for (const [key, margin] of iframeMargins.entries()) {
           console.log(`Checking key "${key}" against path "${pathKey}"`);
-          
+
           let isMatch = false;
           let elementIndex = -1;
-          
+
           // Case 1: Key format "element-X" (stored with empty path)
           if (key.startsWith('element-')) {
             const parts = key.split('element-');
@@ -344,13 +344,13 @@ export const applyMarginToUnbreakableElements = (
               console.log(`Checking format "path-element-X": elementIndex=${elementIndex}, isMatch=${isMatch}`);
             }
           }
-          
+
           if (isMatch && elementIndex >= 0) {
             console.log(`✅ FOUND APPLICABLE MARGIN: element ${elementIndex} = ${margin}px`);
             applicableMargins.set(elementIndex, margin);
           }
         }
-        
+
         if (applicableMargins.size > 0) {
           console.log(`✅ APPLYING IFRAME ELEMENT MARGINS to iframe at path "${pathKey}":`, Array.from(applicableMargins.entries()));
           const modifiedSrcDoc = applyMarginsToSpecificIframeElements(props.srcDoc as string, applicableMargins);
@@ -363,16 +363,16 @@ export const applyMarginToUnbreakableElements = (
         }
       }
 
-      if (typeof props.className === 'string' && props.className.includes('skrift-unbreakable')) {
+      if (typeof props.className === 'string' && props.className.includes('useprint-unbreakable')) {
         const unbreakableMargin = unbreakableMargins.get(pathKey);
-        
+
         console.log(`🔍 CHECKING UNBREAKABLE ELEMENT at path ${pathKey}:`, {
           className: props.className,
           marginFound: unbreakableMargin,
           hasMargin: unbreakableMargin && unbreakableMargin > 0,
           allAvailableMargins: Array.from(unbreakableMargins.entries())
         });
-        
+
         if (unbreakableMargin && unbreakableMargin > 0) {
           console.log(`✅ APPLYING UNBREAKABLE MARGIN: ${unbreakableMargin}px to element at path ${pathKey}`);
           console.log('Element details:', {

@@ -74,7 +74,7 @@ export const Page: React.FC<PageProps> = ({
 
 	return (
 		<Unbreakable
-			className={`skrift-page ${className}`}
+			className={`useprint-page ${className}`}
 			style={pageStyle}
 			data-unbreakable="true"
 			{...props}
@@ -83,5 +83,3 @@ export const Page: React.FC<PageProps> = ({
 		</Unbreakable>
 	);
 };
-
-

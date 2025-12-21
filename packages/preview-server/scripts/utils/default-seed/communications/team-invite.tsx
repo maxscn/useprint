@@ -11,7 +11,7 @@ import {
   Row,
   Tailwind,
   Text,
-} from '@skrift/components';
+} from '@useprint/components';
 
 interface TeamInviteProps {
   inviterName: string;
@@ -32,7 +32,7 @@ export default function TeamInvite({
       <Tailwind>
         <Body className="bg-black text-white">
           <Preview>
-            {inviterName} has invited you to join {teamName} on Skrift
+            {inviterName} has invited you to join {teamName} on UsePrint
           </Preview>
           <Container className="mx-auto">
             <Heading className="font-bold text-center my-[48px] text-[32px]">
@@ -42,7 +42,7 @@ export default function TeamInvite({
               {inviterName} has invited you to join {teamName} as a {role}.
             </Text>
             <Text>
-              Skrift helps teams collaborate on document templates and manage
+              UsePrint helps teams collaborate on document templates and manage
               their document campaigns effectively.
             </Text>
             <Text className="mb-6">
@@ -58,10 +58,10 @@ export default function TeamInvite({
                 </Button>
               </Column>
             </Row>
-            <Text className="mt-6">- Skrift team</Text>
+            <Text className="mt-6">- UsePrint team</Text>
             <Hr style={{ borderTopColor: '#404040' }} />
             <Text className="text-[#606060] font-bold">
-              Skrift, 999 React St, Document City, EC 12345
+              UsePrint, 999 React St, Document City, EC 12345
             </Text>
           </Container>
         </Body>
@@ -73,6 +73,6 @@ export default function TeamInvite({
 TeamInvite.PreviewProps = {
   inviterName: 'John Doe',
   teamName: 'Marketing Team',
-  inviteLink: 'https://skrift.app/join/team/123',
+  inviteLink: 'https://useprint.app/join/team/123',
   role: 'Editor',
 } satisfies TeamInviteProps;
