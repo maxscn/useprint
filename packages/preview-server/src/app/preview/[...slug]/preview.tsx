@@ -203,10 +203,6 @@ const Preview = ({
 													language: "markup",
 													content: renderedDocumentMetadata.markup,
 												},
-												{
-													language: "markdown",
-													content: renderedDocumentMetadata.plainText,
-												},
 											]}
 											setActiveLang={handleLangChange}
 										/>
