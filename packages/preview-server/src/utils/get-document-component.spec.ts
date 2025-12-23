@@ -34,9 +34,6 @@ describe('getDocumentComponent()', () => {
           result.documentComponent,
           result.documentComponent.PreviewProps,
         ),
-        {
-          pretty: true,
-        },
       );
       expect(documentHtml).toMatchSnapshot();
     }

@@ -13,9 +13,8 @@ import { generatePdfFromHtml } from './generate-pdf-from-html';
 
 export interface RenderedDocumentMetadata {
   markup: string;
-  plainText: string;
   reactMarkup: string;
-  pdfData: string; // base64 encoded PDF
+  pdfData: string;
 }
 
 export type DocumentRenderingResult =
@@ -74,21 +73,14 @@ export const renderDocumentByPath = async (
 
   const previewProps = Document.PreviewProps || {};
   const DocumentComponent = Document as React.FC<any>;
-  const componentProps = { 
+  const componentProps = {
     ...previewProps,
     ...(pageSize && { pageSize })
   };
-  
+
   try {
-    const markup = await render(createElement(DocumentComponent, componentProps), {
-      pretty: true,
-    });
-    const plainText = await render(
-      createElement(DocumentComponent, componentProps),
-      {
-        plainText: true,
-      },
-    );
+    const markup = await render(createElement(DocumentComponent, componentProps));
+
 
     const reactMarkup = await fs.promises.readFile(documentPath, 'utf-8');
 
@@ -123,7 +115,6 @@ export const renderDocumentByPath = async (
       // markup making users suspect of any issues. These null byte characters
       // only seem to happen with React 18, as it has no similar incident with React 19.
       markup: markup.replaceAll('\0', ''),
-      plainText,
       reactMarkup,
       pdfData,
     };

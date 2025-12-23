@@ -126,13 +126,11 @@ export const exportTemplates = async (
         default: React.FC;
         render: (
           element: React.ReactElement,
-          options: Record<string, unknown>,
         ) => Promise<string>;
         reactDocumentCreateReactElement: typeof React.createElement;
       };
       const rendered = await documentModule.render(
         documentModule.reactDocumentCreateReactElement(documentModule.default, {}),
-        options,
       );
       const htmlPath = template.replace(
         '.cjs',
