@@ -1,5 +1,17 @@
 # @useprint/components
 
+## 0.3.0
+
+### Minor Changes
+
+- 3d66e11: Moving from "skrift" to "useprint".
+
+### Patch Changes
+
+- Updated dependencies [3d66e11]
+  - @useprint/render@0.3.0
+  - @useprint/tailwind@0.3.0
+
 ## 0.2.0
 
 ### Minor Changes

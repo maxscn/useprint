@@ -1,5 +1,11 @@
 # useprint
 
+## 0.2.0
+
+### Minor Changes
+
+- 3d66e11: Moving from "skrift" to "useprint".
+
 ## 0.1.0
 
 ### Minor Changes
