@@ -29,8 +29,9 @@ export const renderDocumentByPath = async (
   documentPath: string,
   invalidatingCache = false,
   pageSize?: string,
+  isLandscape?: boolean,
 ): Promise<DocumentRenderingResult> => {
-  const cacheKey = `${documentPath}${pageSize ? `__${pageSize}` : ''}`;
+  const cacheKey = `${documentPath}${pageSize ? `__${pageSize}` : ''}${isLandscape ? '__landscape' : ''}`;
   if (invalidatingCache) {
     // Delete all cache entries for this document path (both with and without pageSize)
     // This ensures hot reload properly invalidates cached results regardless of pageSize
@@ -75,7 +76,8 @@ export const renderDocumentByPath = async (
   const DocumentComponent = Document as React.FC<any>;
   const componentProps = {
     ...previewProps,
-    ...(pageSize && { pageSize })
+    ...(pageSize && { pageSize }),
+    ...(isLandscape && { isLandscape })
   };
 
   try {
@@ -87,7 +89,7 @@ export const renderDocumentByPath = async (
     // Generate PDF from HTML markup
     let pdfData: string;
     try {
-      pdfData = await generatePdfFromHtml(markup.replaceAll('\0', ''), pageSize);
+      pdfData = await generatePdfFromHtml(markup.replaceAll('\0', ''), pageSize, isLandscape);
       console.log("PDF data generated, length:", pdfData.length, "first 50 chars:", pdfData.substring(0, 50));
     } catch (pdfError) {
       // If PDF generation fails, log but don't fail the entire rendering

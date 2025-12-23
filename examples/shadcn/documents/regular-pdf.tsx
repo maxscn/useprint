@@ -2,17 +2,18 @@ import {
 	Body,
 	Document,
 	Head,
-	type PAGE_SIZES,
 	Page,
 	Tailwind,
 	Unbreakable,
 	usePageSize,
 } from "@useprint/components";
+import type { PAGE_SIZES } from "@useprint/shared";
 
 interface RegularPDFProps {
 	// pageSize is automatically provided by the server-side rendering
 	// when a page size is selected in the preview UI
 	pageSize?: (typeof PAGE_SIZES)[number]["name"];
+	isLandscape?: boolean;
 }
 
 const columns = ["name"];
@@ -1239,15 +1240,15 @@ const PageSizeDemo = () => {
 	);
 };
 
-export const RegularPDF = ({ pageSize }: RegularPDFProps) => (
-	<Document pageSize={pageSize}>
+export const RegularPDF = ({ pageSize, isLandscape }: RegularPDFProps) => (
+	<Document pageSize={pageSize} isLandscape={isLandscape}>
 		<Tailwind>
 			<Head />
 			<Body>
 				<Page>
           First page
 					<PageSizeDemo />
-					<p className="text-black mt-4">
+					<p className="text-black mt-4 w-full">
 						This content is now inside a Page component that responds to the
 						selected page size.
 					</p>

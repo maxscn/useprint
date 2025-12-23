@@ -1,6 +1,6 @@
 "use client";
-import type { PAGE_SIZES } from "@useprint/components";
-import { useRouter, useSearchParams } from "next/navigation";
+import type { PAGE_SIZES } from "@useprint/shared";
+import { useRouter } from "next/navigation";
 import { createContext, useContext } from "react";
 import type {
 	DocumentRenderingResult,
@@ -17,6 +17,7 @@ export const PreviewContext = createContext<
 			renderedDocumentMetadata: RenderedDocumentMetadata | undefined;
 			renderingResult: DocumentRenderingResult;
 			pageSize?: (typeof PAGE_SIZES)[number]["name"];
+			isLandscape?: boolean;
 			documentSlug: string;
 			documentPath: string;
 	  }
@@ -35,6 +36,7 @@ interface PreviewProvider {
 	documentSlug: string;
 	documentPath: string;
 	pageSize?: (typeof PAGE_SIZES)[number]["name"];
+	isLandscape?: boolean;
 	serverRenderingResult: DocumentRenderingResult;
 
 	children: React.ReactNode;
@@ -44,6 +46,7 @@ export const PreviewProvider = ({
 	documentSlug,
 	documentPath,
 	pageSize,
+	isLandscape,
 	serverRenderingResult,
 	children,
 }: PreviewProvider) => {
@@ -57,6 +60,7 @@ export const PreviewProvider = ({
 		documentPath,
 		baseRenderingResult,
 		pageSize,
+		isLandscape,
 	);
 	const renderedDocumentMetadata = useRenderingMetadata(
 		documentPath,
@@ -85,6 +89,7 @@ export const PreviewProvider = ({
 				documentPath,
 				documentSlug,
 				pageSize,
+				isLandscape,
 				renderedDocumentMetadata,
 				renderingResult,
 			}}

@@ -1,6 +1,6 @@
 "use client";
 
-import { PAGE_SIZES } from "@useprint/components";
+import { PAGE_SIZES } from "@useprint/shared";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { use, useState } from "react";
 import { flushSync } from "react-dom";
@@ -14,6 +14,7 @@ import { Print } from "../../../components/print";
 import { useToolbarState } from "../../../components/toolbar";
 import { Tooltip } from "../../../components/tooltip";
 import { ActiveViewToggleGroup } from "../../../components/topbar/active-view-toggle-group";
+import { LandscapeToggle } from "../../../components/topbar/landscape-toggle";
 import { ViewSizeControls } from "../../../components/topbar/view-size-controls";
 import { PreviewContext } from "../../../contexts/preview";
 import { useClampedState } from "../../../hooks/use-clamped-state";
@@ -44,6 +45,7 @@ const Preview = ({
 	const activeView = searchParams.get("view") ?? "preview";
 	const activeLang = searchParams.get("lang") ?? "jsx";
 
+
 	const handleViewChange = (view: string) => {
 		const params = new URLSearchParams(searchParams);
 		params.set("view", view);
@@ -60,6 +62,7 @@ const Preview = ({
 		);
 	};
 
+
 	const hasRenderingMetadata = typeof renderedDocumentMetadata !== "undefined";
 	const hasErrors = "error" in renderingResult;
 
@@ -69,6 +72,7 @@ const Preview = ({
 	const minHeight = 100;
 	const storedWidth = searchParams.get("width");
 	const storedHeight = searchParams.get("height");
+	const storedLandscape = searchParams.get("landscape");
 	const [width, setWidth] = useClampedState(
 		storedWidth ? Number.parseInt(storedWidth) : 600,
 		minWidth,
@@ -79,6 +83,8 @@ const Preview = ({
 		minHeight,
 		maxHeight,
 	);
+
+	const [isLandscape, setIsLandscape] = useState(storedLandscape === "true");
 	const backupPreset = PAGE_SIZES.find((p) => p.name === "A4")!;
 	const [currentPreset, setCurrentPreset] = useState<(typeof PAGE_SIZES)[number]>(
 		storedPageSize
@@ -95,10 +101,19 @@ const Preview = ({
 		} else {
 			params.delete("pageSize");
 		}
+		if (isLandscape) {
+			params.set("landscape", "true");
+		} else {
+			params.delete("landscape");
+		}
 		router.push(`${pathname}?${params.toString()}${location.hash}`);
 	}, 300);
 
 	const { toggled: toolbarToggled } = useToolbarState();
+	const effectiveDimensions = isLandscape
+		? { width: currentPreset.dimensions.height, height: currentPreset.dimensions.width }
+		: currentPreset.dimensions;
+	console.log(effectiveDimensions)
 	return (
 		<>
 			<PrintPreview documentTitle={documentTitle} />
@@ -126,6 +141,12 @@ const Preview = ({
 						});
 					}}
 				/>
+				<LandscapeToggle isLandscape={isLandscape} onToggle={() => {
+				setIsLandscape(l => !l);
+				flushSync(() => {
+					handleSaveViewSize();
+				});
+				}} />
 				<ActiveViewToggleGroup
 					activeView={activeView}
 					setActiveView={handleViewChange}
@@ -175,9 +196,9 @@ const Preview = ({
 							PdfViewer && (
 								<PdfViewer
 									pdfData={renderedDocumentMetadata.pdfData}
-									width={currentPreset.dimensions.width}
-									height={currentPreset.dimensions.height}
-									key={pageSize + documentTitle}
+									width={effectiveDimensions.width}
+									height={effectiveDimensions.height}
+									key={`${pageSize}-${isLandscape}-${documentTitle}`}
 								/>
 							)}
 						{activeView === "preview" && !renderedDocumentMetadata.pdfData && (

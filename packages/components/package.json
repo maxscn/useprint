@@ -23,6 +23,7 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "@useprint/shared": "*",
     "@useprint/tailwind": "*",
     "@useprint/render": "*"
   },

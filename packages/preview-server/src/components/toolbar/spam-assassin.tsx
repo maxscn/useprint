@@ -26,12 +26,11 @@ function toSorted<T>(array: T[], sorter: (a: T, b: T) => number): T[] {
 
 export const useSpamAssassin = ({
   markup,
-  plainText,
+
 
   initialResult,
 }: {
   markup: string;
-  plainText: string;
 
   initialResult?: SpamCheckingResult;
 }) => {
@@ -53,7 +52,6 @@ export const useSpamAssassin = ({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           html: markup,
-          plainText: plainText,
         }),
       });
 

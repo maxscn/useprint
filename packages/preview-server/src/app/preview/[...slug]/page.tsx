@@ -1,5 +1,5 @@
 import path from "node:path";
-import type { PAGE_SIZES } from "@useprint/components";
+import type { PAGE_SIZES } from "@useprint/shared";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import {
@@ -43,6 +43,7 @@ const Page = async ({
 		typeof searchParams.pageSize === "string"
 			? (searchParams.pageSize as (typeof PAGE_SIZES)[number]["name"])
 			: undefined;
+	const isLandscape = typeof searchParams.landscape === "string" && searchParams.landscape === "true";
 	const documentsDirMetadata = await getDocumentsDirectoryMetadata(
 		documentsDirectoryAbsolutePath,
 	);
@@ -70,6 +71,7 @@ This is most likely not an issue with the preview server. Maybe there was a typo
 		documentPath,
 		false,
 		pageSize,
+		isLandscape,
 	);
 	let lintingRows: LintingRow[] | undefined;
 	let compatibilityCheckingResults: CompatibilityCheckingResult[] | undefined;
@@ -115,8 +117,9 @@ This is most likely not an issue with the preview server. Maybe there was a typo
 			documentSlug={slug}
 			documentPath={documentPath}
 			pageSize={pageSize}
+			isLandscape={isLandscape}
 			serverRenderingResult={serverDocumentRenderingResult}
-			key={documentPath + pageSize}
+			key={`${documentPath}-${pageSize}-${isLandscape}`}
 		>
 			<Shell currentDocumentOpenSlug={slug}>
 				{/* This suspense is so that this page doesn't throw warnings */}

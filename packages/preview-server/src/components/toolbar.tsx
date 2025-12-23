@@ -43,13 +43,11 @@ const ToolbarInner = ({
 
   markup,
   reactMarkup,
-  plainText,
   documentPath,
   documentSlug,
 }: ToolbarProps & {
   markup: string;
   reactMarkup: string;
-  plainText: string;
   documentSlug: string;
   documentPath: string;
 }) => {
@@ -76,7 +74,6 @@ const ToolbarInner = ({
   const [spamCheckingResult, { load: loadSpamChecking, loading: spamLoading }] =
     useSpamAssassin({
       markup,
-      plainText,
 
       initialResult: serverSpamCheckingResult ?? cachedSpamCheckingResult,
     });
@@ -336,7 +333,7 @@ export const Toolbar = ({
     React.use(PreviewContext)!;
 
   if (renderedDocumentMetadata === undefined) return null;
-  const { markup, plainText, reactMarkup } = renderedDocumentMetadata;
+  const { markup, reactMarkup } = renderedDocumentMetadata;
 
   return (
     <ToolbarInner
@@ -344,7 +341,6 @@ export const Toolbar = ({
       documentSlug={documentSlug}
       markup={markup}
       reactMarkup={reactMarkup}
-      plainText={plainText}
       serverLintingRows={serverLintingRows}
       serverSpamCheckingResult={serverSpamCheckingResult}
       serverCompatibilityResults={serverCompatibilityResults}

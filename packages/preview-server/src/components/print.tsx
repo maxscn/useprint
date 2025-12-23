@@ -1,7 +1,8 @@
+import { PageSize } from "@useprint/shared";
 import type * as React from "react";
 import { toast } from "sonner";
 
-export const Print = ({ pdfData }: { pdfData?: string }) => {
+export const Print = ({ pdfData, options }: { pdfData?: string; options?: { pageSize?: PageSize["name"], landscape?: boolean } }) => {
 	const onFormSubmit = async (e: React.FormEvent) => {
 		if (typeof window === "undefined") {
 			return;

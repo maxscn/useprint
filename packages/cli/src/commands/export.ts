@@ -134,7 +134,7 @@ export const exportTemplates = async (
       );
       const htmlPath = template.replace(
         '.cjs',
-        options.plainText ? '.txt' : '.html',
+        '.html',
       );
       writeFileSync(htmlPath, rendered);
       unlinkSync(template);

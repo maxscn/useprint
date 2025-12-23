@@ -3,7 +3,7 @@ import {
 	PAGE_SIZES,
 	type PageSize,
 	type ViewDimensions,
-} from "@useprint/components";
+} from "@useprint/shared";
 import * as React from "react";
 import { cn } from "../../utils";
 import { IconArrowDown } from "../icons/icon-arrow-down";

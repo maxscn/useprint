@@ -41,15 +41,14 @@ program
   .description('Build the templates to the `out` directory')
   .option('--outDir <path>', 'Output directory', 'out')
   .option('-p, --pretty', 'Pretty print the output', false)
-  .option('-t, --plainText', 'Set output format as plain text', false)
   .option('-d, --dir <path>', 'Directory with your document templates', './documents')
   .option(
     '-s, --silent',
     'To, or not to show a spinner with process information',
     false,
   )
-  .action(({ outDir, pretty, plainText, silent, dir: srcDir }) =>
-    exportTemplates(outDir, srcDir, { silent, plainText, pretty }),
+  .action(({ outDir, pretty,  silent, dir: srcDir }) =>
+    exportTemplates(outDir, srcDir, { silent, pretty }),
   );
 
 program.parse();

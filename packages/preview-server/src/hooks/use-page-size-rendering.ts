@@ -6,6 +6,7 @@ export const usePageSizeRendering = (
   documentPath: string,
   baseRenderingResult: DocumentRenderingResult,
   pageSize?: string | null,
+  isLandscape?: boolean,
 ) => {
   const [renderingResult, setRenderingResult] = useState(baseRenderingResult);
   const [isLoading, setIsLoading] = useState(false);
@@ -21,7 +22,7 @@ export const usePageSizeRendering = (
 
     const reRenderWithPageSize = async () => {
       try {
-        const newResult = await renderDocumentByPath(documentPath, false, pageSize);
+        const newResult = await renderDocumentByPath(documentPath, false, pageSize, isLandscape);
         if (!isCancelled) {
           setRenderingResult(newResult);
           setIsLoading(false);
@@ -40,7 +41,7 @@ export const usePageSizeRendering = (
     return () => {
       isCancelled = true;
     };
-  }, [pageSize, documentPath, baseRenderingResult]);
+  }, [pageSize, isLandscape, documentPath, baseRenderingResult]);
 
   return { renderingResult, isLoading };
 };

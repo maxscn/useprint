@@ -1,6 +1,5 @@
-import { Slot } from "@radix-ui/react-slot";
-import type { PageSize } from "@useprint/components";
-import { type ComponentProps, useCallback, useEffect, useRef } from "react";
+import type { PageSize } from "@useprint/shared";
+import { type ComponentProps } from "react";
 import { cn } from "../utils";
 
 type Direction = "north" | "south" | "east" | "west";
