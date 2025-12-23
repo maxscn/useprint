@@ -1,5 +1,15 @@
 # @useprint/tailwind
 
+## 0.2.0
+
+### Minor Changes
+
+- 8e6d18e: Moving from "skrift" to "useprint".
+
+### Patch Changes
+
+- 4b9fa8c: Name change
+
 ## 0.1.0
 
 ### Minor Changes
