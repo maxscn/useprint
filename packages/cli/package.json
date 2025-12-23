@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD:packages/useprint/package.json
-  "name": "@useprint/preview",
-  "version": "0.1.0",
-=======
   "name": "@useprint/cli",
   "version": "0.0.10",
->>>>>>> 73501f1 (removing options for render):packages/cli/package.json
   "description": "A live preview of your documents right in your browser.",
   "bin": {
     "useprint": "./dist/index.js"
