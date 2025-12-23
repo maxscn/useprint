@@ -4,6 +4,16 @@
 
 ### Minor Changes
 
+- 8e6d18e: Moving from "skrift" to "useprint".
+
+### Patch Changes
+
+- 4b9fa8c: Name change
+
+## 0.1.0
+
+### Minor Changes
+
 - 83edf9b: Moving from "skrift" to "useprint".
 
 ## 0.0.10

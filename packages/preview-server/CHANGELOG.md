@@ -4,6 +4,19 @@
 
 ### Minor Changes
 
+- 8e6d18e: Moving from "skrift" to "useprint".
+
+### Patch Changes
+
+- 4b9fa8c: Name change
+- Updated dependencies [8e6d18e]
+- Updated dependencies [4b9fa8c]
+  - @useprint/components@0.2.0
+
+## 0.1.0
+
+### Minor Changes
+
 - 83edf9b: Moving from "skrift" to "useprint".
 
 ### Patch Changes
