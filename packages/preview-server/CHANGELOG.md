@@ -1,5 +1,14 @@
 # @useprint/preview
 
+## 0.1.1
+
+### Patch Changes
+
+- 5fced3d: feat: added landscape toggle and removed temporary landscape sizez
+- Updated dependencies [5fced3d]
+  - @useprint/components@0.1.1
+  - @useprint/shared@0.1.1
+
 ## 0.1.0
 
 ### Minor Changes
