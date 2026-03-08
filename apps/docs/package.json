@@ -20,7 +20,8 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "tailwind-merge": "^3.5.0",
-    "@takumi-rs/image-response": "^0.70.4"
+    "@takumi-rs/image-response": "^0.70.4",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.2.1",
