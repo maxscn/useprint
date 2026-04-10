@@ -13,20 +13,6 @@ test('getDocumentsDirectoryMetadata on demo documents', async () => {
     documentFilenames: [],
     subDirectories: [
       {
-        absolutePath: `${documentsDirectoryPath}/auth`,
-        directoryName: 'auth',
-        relativePath: 'auth',
-        documentFilenames: [],
-        subDirectories: [],
-      },
-      {
-        absolutePath: `${documentsDirectoryPath}/communications`,
-        directoryName: 'communications',
-        relativePath: 'communications',
-        documentFilenames: [],
-        subDirectories: [],
-      },
-      {
         absolutePath: `${documentsDirectoryPath}/contracts`,
         directoryName: 'contracts',
         relativePath: 'contracts',
@@ -38,13 +24,6 @@ test('getDocumentsDirectoryMetadata on demo documents', async () => {
         directoryName: 'finance',
         relativePath: 'finance',
         documentFilenames: ['payment-summary'],
-        subDirectories: [],
-      },
-      {
-        absolutePath: `${documentsDirectoryPath}/marketing`,
-        directoryName: 'marketing',
-        relativePath: 'marketing',
-        documentFilenames: [],
         subDirectories: [],
       },
       {
