@@ -1,5 +1,14 @@
 # @useprint/preview
 
+## 0.1.2
+
+### Patch Changes
+
+- 4ba9bad: Improving css engine, branding and a loader to pdf preview. Adding init-doc command. Rewriting tests. Cleaning up react.email.
+- Updated dependencies [4ba9bad]
+  - @useprint/components@0.1.2
+  - @useprint/shared@0.1.2
+
 ## 0.1.1
 
 ### Patch Changes
