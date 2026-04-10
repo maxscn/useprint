@@ -39,6 +39,11 @@
       }
     }
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxscn/useprint.git",
+    "directory": "packages/useprint"
+  },
   "publishConfig": {
     "access": "public"
   }
