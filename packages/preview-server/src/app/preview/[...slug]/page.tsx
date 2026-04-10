@@ -2,20 +2,13 @@ import path from "node:path";
 import type { PAGE_SIZES } from "@useprint/shared";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
-import {
-	type CompatibilityCheckingResult,
-	checkCompatibility,
-} from "../../../actions/document-validation/check-compatibility";
 import { getDocumentPathFromSlug } from "../../../actions/get-document-path-from-slug";
 import { renderDocumentByPath } from "../../../actions/render-document-by-path";
 import { Shell } from "../../../components/shell";
-import type { LintingRow } from "../../../components/toolbar/linter";
 
 import { PreviewProvider } from "../../../contexts/preview";
 import { getDocumentsDirectoryMetadata } from "../../../utils/get-documents-directory-metadata";
-import { getLintingSources, loadLintingRowsFrom } from "../../../utils/linting";
-import { loadStream } from "../../../utils/load-stream";
-import { documentsDirectoryAbsolutePath, isBuilding } from "../../env";
+import { documentsDirectoryAbsolutePath } from "../../env";
 import Preview from "./preview";
 
 export const dynamicParams = true;
@@ -35,7 +28,6 @@ const Page = async ({
 }) => {
 	const params = await paramsPromise;
 	const searchParams = await searchParamsPromise;
-	console.log("searchParams", searchParams);
 	// will come in here as segments of a relative path to the document
 	// ex: ['authentication', 'verify-password.tsx']
 	const slug = decodeURIComponent(params.slug.join("/"));
@@ -73,44 +65,6 @@ This is most likely not an issue with the preview server. Maybe there was a typo
 		pageSize,
 		isLandscape,
 	);
-	let lintingRows: LintingRow[] | undefined;
-	let compatibilityCheckingResults: CompatibilityCheckingResult[] | undefined;
-
-	if (isBuilding) {
-		if ("error" in serverDocumentRenderingResult) {
-			throw new Error(serverDocumentRenderingResult.error.message, {
-				cause: serverDocumentRenderingResult.error,
-			});
-		}
-		const lintingSources = getLintingSources(
-			serverDocumentRenderingResult.markup,
-			"",
-		);
-		lintingRows = [];
-		for await (const row of loadLintingRowsFrom(lintingSources)) {
-			lintingRows.push(row);
-		}
-		lintingRows.sort((a, b) => {
-			if (a.result.status === "error" && b.result.status === "warning") {
-				return -1;
-			}
-
-			if (a.result.status === "warning" && b.result.status === "error") {
-				return 1;
-			}
-
-			return 0;
-		});
-		compatibilityCheckingResults = [];
-		for await (const result of loadStream(
-			await checkCompatibility(
-				serverDocumentRenderingResult.reactMarkup,
-				documentPath,
-			),
-		)) {
-			compatibilityCheckingResults.push(result);
-		}
-	}
 
 	return (
 		<PreviewProvider
@@ -125,20 +79,14 @@ This is most likely not an issue with the preview server. Maybe there was a typo
 				{/* This suspense is so that this page doesn't throw warnings */}
 				{/* on the build of the preview server de-opting into         */}
 				{/* client-side rendering on build                            */}
-				<Suspense>
-					<Preview
-						documentTitle={path.basename(documentPath)}
-						pageSize={pageSize || "A4"}
-					/>
-
-					{/* <Toolbar
-            serverLintingRows={lintingRows}
-            serverSpamCheckingResult={spamCheckingResult}
-            serverCompatibilityResults={compatibilityCheckingResults}
-          /> */}
-				</Suspense>
-			</Shell>
-		</PreviewProvider>
+					<Suspense>
+						<Preview
+							documentTitle={path.basename(documentPath)}
+							pageSize={pageSize || "A4"}
+						/>
+					</Suspense>
+				</Shell>
+			</PreviewProvider>
 	);
 };
 

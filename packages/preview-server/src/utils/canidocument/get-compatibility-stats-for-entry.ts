@@ -3,7 +3,7 @@ import type {
   DocumentClient,
   Platform,
   SupportEntry,
-} from '../../actions/document-validation/check-compatibility';
+} from './types';
 
 export type SupportStatus = DetailedSupportStatus['status'];
 

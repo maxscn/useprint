@@ -7,9 +7,11 @@ describe('getDocumentComponent()', () => {
       const result = await getDocumentComponent(
         path.resolve(__dirname, './testing/request-response-document.tsx'),
       );
-      if ('error' in result) {
-        console.log(result.error);
-        expect('error' in result, 'there should be no errors').toBe(false);
+      expect('error' in result, 'there should be no errors').toBe(false);
+
+      if (!('error' in result)) {
+        expect(result.documentComponent).toBeTruthy();
+        expect(result.sourceMapToOriginalFile).toBeTruthy();
       }
     });
   });
@@ -18,7 +20,7 @@ describe('getDocumentComponent()', () => {
     const result = await getDocumentComponent(
       path.resolve(
         __dirname,
-        '../../../../apps/demo/documents/notifications/vercel-invite-user.tsx',
+        '../../scripts/utils/default-seed/contracts/project-proposal.tsx',
       ),
     );
 

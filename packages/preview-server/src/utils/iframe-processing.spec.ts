@@ -15,7 +15,7 @@ describe('iframe-processing', () => {
   });
 
   describe('applyMarginToIframeSrcDoc', () => {
-    it('applies margin to first unbreakable element', () => {
+    it('injects a style rule for the first unbreakable element', () => {
       const srcDoc = `
         <html>
           <body>
@@ -26,24 +26,24 @@ describe('iframe-processing', () => {
 
       const result = applyMarginToIframeSrcDoc(srcDoc, 50);
 
+      expect(result).toContain('.useprint-unbreakable:first-of-type');
       expect(result).toContain('margin-top: 50px !important');
       expect(result).toContain('useprint-unbreakable');
     });
 
-    it('replaces existing margin-top', () => {
+    it('inserts the style rule into an existing head', () => {
       const srcDoc = `
         <html>
-          <body>
-            <div class="useprint-unbreakable" style="margin-top: 10px; color: red;">Content</div>
-          </body>
+          <head><meta charset="utf-8" /></head>
+          <body><div class="useprint-unbreakable">Content</div></body>
         </html>
       `;
 
       const result = applyMarginToIframeSrcDoc(srcDoc, 50);
 
+      expect(result).toContain('<meta charset="utf-8" />');
+      expect(result).toContain('</style></head>');
       expect(result).toContain('margin-top: 50px !important');
-      expect(result).toContain('color: red');
-      expect(result).not.toContain('margin-top: 10px');
     });
 
     it('preserves existing styles', () => {
@@ -62,7 +62,7 @@ describe('iframe-processing', () => {
       expect(result).toContain('margin-top: 30px !important');
     });
 
-    it('handles srcDoc without unbreakable elements', () => {
+    it('creates a head element when the document only has a body', () => {
       const srcDoc = `
         <html>
           <body>
@@ -73,28 +73,16 @@ describe('iframe-processing', () => {
 
       const result = applyMarginToIframeSrcDoc(srcDoc, 50);
 
-      expect(result).toBe(srcDoc);
+      expect(result).toContain('<head><style>');
+      expect(result).toContain('Regular content');
     });
 
-    it('handles empty srcDoc', () => {
+    it('handles empty srcDoc by prepending a head', () => {
       const srcDoc = '';
       const result = applyMarginToIframeSrcDoc(srcDoc, 50);
 
-      expect(result).toBe(srcDoc);
-    });
-
-    it('handles element without existing style attribute', () => {
-      const srcDoc = `
-        <html>
-          <body>
-            <div class="useprint-unbreakable">Content</div>
-          </body>
-        </html>
-      `;
-
-      const result = applyMarginToIframeSrcDoc(srcDoc, 25);
-
-      expect(result).toContain('margin-top: 25px !important');
+      expect(result).toContain('<head><style>');
+      expect(result).toContain('margin-top: 50px !important');
     });
   });
 

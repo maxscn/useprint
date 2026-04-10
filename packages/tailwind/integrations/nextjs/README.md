@@ -1,3 +1,5 @@
+[docs](https://useprint.dev/docs/packages/tailwind)
+
 This is a NextJS project bootstrapped with `create-next-app@latest` that contains a Tailwind
 document using most of the features we provide that will be auto-built on testing to
 make sure this new release works properly with the latest version of NextJS when being built.

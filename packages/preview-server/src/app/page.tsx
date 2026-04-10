@@ -1,13 +1,15 @@
-import path from 'node:path';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Button, Heading, Text } from '../components';
-import CodeSnippet from '../components/code-snippet';
-import { Shell } from '../components/shell';
-import { documentsDirectoryAbsolutePath } from './env';
+import path from "node:path";
+import Image from "next/image";
+import Link from "next/link";
+import { Button, Heading, Text } from "../components";
+import CodeSnippet from "../components/code-snippet";
+import { Shell } from "../components/shell";
+import { documentsDirectoryAbsolutePath } from "./env";
 
 const Home = () => {
-  const baseDocumentsDirectoryName = path.basename(documentsDirectoryAbsolutePath);
+  const baseDocumentsDirectoryName = path.basename(
+    documentsDirectoryAbsolutePath,
+  );
 
   return (
     <Shell>
@@ -18,12 +20,12 @@ const Home = () => {
           </Heading>
           <Text as="p">
             To start developing your documents, you can create a<br />
-            <CodeSnippet>.jsx</CodeSnippet> or <CodeSnippet>.tsx</CodeSnippet>{' '}
-            file under your <CodeSnippet>{baseDocumentsDirectoryName}</CodeSnippet>{' '}
-            folder.
+            <CodeSnippet>.jsx</CodeSnippet> or <CodeSnippet>.tsx</CodeSnippet>{" "}
+            file under your{" "}
+            <CodeSnippet>{baseDocumentsDirectoryName}</CodeSnippet> folder.
           </Text>
           <Button asChild className="mt-3" size="3">
-            <Link href="https://useprint.dev/docs">Check the docs</Link>
+            <Link href="https://useprint.dev">Check the docs</Link>
           </Button>
         </div>
       </div>

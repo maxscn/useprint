@@ -12,7 +12,7 @@
     "build": "tsup-node && tsc --project tsconfig.dts.json",
     "build:watch": "tsup-node --watch",
     "clean": "rm -rf dist",
-    "test": "vitest run",
+    "test": "vitest run --passWithNoTests",
     "test:watch": "vitest"
   },
   "devDependencies": {

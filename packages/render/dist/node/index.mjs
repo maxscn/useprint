@@ -84,23 +84,6 @@ var render = (node) => __async(null, null, function* () {
   const document = `${doctype}${html.replace(/<!DOCTYPE.*?>/, "")}`;
   return document;
 });
-
-// src/shared/plain-text-selectors.ts
-var plainTextSelectors = [
-  { selector: "img", format: "skip" },
-  { selector: "[data-skip-in-text=true]", format: "skip" },
-  {
-    selector: "a",
-    options: { linkBrackets: false }
-  }
-];
-
-// src/node/index.ts
-var renderAsync = (element) => {
-  return render(element);
-};
 export {
-  plainTextSelectors,
-  render,
-  renderAsync
+  render
 };

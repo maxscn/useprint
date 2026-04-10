@@ -32,18 +32,13 @@ export async function generatePdfFromHtml(
     isLandscape?: boolean,
 ): Promise<string> {
     try {
-        console.log("Starting PDF generation...");
         const browser = await getBrowser();
-        console.log("Browser obtained");
         const page = await browser.newPage();
-        console.log("New page created");
 
         // Set content
-        console.log("Setting HTML content...");
         await page.setContent(html, {
             waitUntil: "networkidle", // This might be the issue - try "domcontentloaded" instead
         });
-        console.log("Content set");
 
         // Determine PDF options based on page size
         const pdfOptions: Parameters<typeof page.pdf>[0] = {
@@ -59,10 +54,7 @@ export async function generatePdfFromHtml(
             pdfOptions.format = "A4";
         }
 
-        // Generate PDF
-        console.log("Generating PDF...", pdfOptions);
         const pdfBuffer = await page.pdf(pdfOptions);
-        console.log("PDF generated");
 
         await page.close();
 

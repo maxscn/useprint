@@ -139,7 +139,7 @@ describe('margin-calculation', () => {
         srcDoc: '<div class="useprint-unbreakable">Content</div>'
       });
 
-      const iframeMargins = new Map([['0', 30]]);
+      const iframeMargins = new Map([['element-0', 30]]);
 
       const result = applyMarginToUnbreakableElements(children, new Map(), iframeMargins);
 
@@ -180,8 +180,8 @@ describe('margin-calculation', () => {
       ]);
 
       const unbreakableMargins = new Map([
-        ['0', 20],
-        ['1', 40]
+        ['0-0', 20],
+        ['0-1', 40]
       ]);
 
       const result = applyMarginToUnbreakableElements(children, unbreakableMargins);
@@ -249,12 +249,12 @@ describe('margin-calculation', () => {
         srcDoc: '<div class="useprint-unbreakable">Content</div>'
       });
 
-      const iframeMargins = new Map([['0', 0]]);
+      const iframeMargins = new Map([['element-0', 0]]);
 
       const result = applyMarginToUnbreakableElements(children, new Map(), iframeMargins);
 
       const element = result as React.ReactElement<any>;
-      expect(element.props.srcDoc).toBe('<div class="useprint-unbreakable">Content</div>');
+      expect(element.props.srcDoc).toContain('margin-top: 0px !important');
     });
   });
 });

@@ -1,0 +1,51 @@
+---
+title: Chromium
+description: Render React to HTML with Useprint and drive your own browser-based PDF pipeline.
+---
+
+If you already run Playwright, Puppeteer, or another Chromium-based pipeline, Useprint can focus on the React-to-HTML step while your infrastructure handles PDF generation.
+
+## Render React to HTML
+
+```tsx
+import { render } from '@useprint/render';
+import { Body, Document, Head, Page } from '@useprint/components';
+
+function Quote() {
+  return (
+    <Document>
+      <Head />
+      <Body>
+        <Page style={{ padding: 40 }}>
+          <h1>Quote</h1>
+          <p>Render this React tree to HTML, then open it in Chromium.</p>
+        </Page>
+      </Body>
+    </Document>
+  );
+}
+
+const html = await render(<Quote />);
+```
+
+## Hand the HTML to Chromium
+
+```ts
+import { chromium } from 'playwright';
+
+const browser = await chromium.launch();
+const page = await browser.newPage();
+
+await page.setContent(html, { waitUntil: 'networkidle' });
+
+await page.pdf({
+  format: 'A4',
+  printBackground: true,
+});
+
+await browser.close();
+```
+
+## Alternatives
+
+- there are some providers like https://www.chromiumly.dev/ that you can send the html to

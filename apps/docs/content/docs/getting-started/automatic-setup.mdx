@@ -1,0 +1,227 @@
+---
+title: Automatic setup
+description: Scaffold a new Useprint project with init-doc.
+---
+
+For the fastest path to a working preview, use `init-doc`. It creates a folder with a starter document, pinned `@useprint/components` and `@useprint/cli` versions, and npm scripts ready to go.
+
+Using a monorepo? See [Monorepo setup](/docs/getting-started/monorepo) (or [Manual install](/docs/getting-started/installation) for a flat repo).
+
+## 1. Install
+
+We recommend using `init-doc`, which sets up everything automatically.
+
+<CodeBlockTabs groupId="package-manager" persist defaultValue="npm">
+  <CodeBlockTabsList>
+    <CodeBlockTabsTrigger value="npm">npm</CodeBlockTabsTrigger>
+    <CodeBlockTabsTrigger value="yarn">yarn</CodeBlockTabsTrigger>
+    <CodeBlockTabsTrigger value="pnpm">pnpm</CodeBlockTabsTrigger>
+    <CodeBlockTabsTrigger value="bun">bun</CodeBlockTabsTrigger>
+  </CodeBlockTabsList>
+  <CodeBlockTab value="npm">
+
+```bash
+npx init-doc@latest
+```
+
+  </CodeBlockTab>
+  <CodeBlockTab value="yarn">
+
+```bash
+yarn dlx init-doc@latest
+```
+
+  </CodeBlockTab>
+  <CodeBlockTab value="pnpm">
+
+```bash
+pnpm dlx init-doc@latest
+```
+
+  </CodeBlockTab>
+  <CodeBlockTab value="bun">
+
+```bash
+bunx init-doc@latest
+```
+
+  </CodeBlockTab>
+</CodeBlockTabs>
+
+This creates a new folder called `useprint-starter` with a sample document and project files.
+
+To use a different folder name, pass it as the first argument:
+
+<CodeBlockTabs groupId="package-manager" persist defaultValue="npm">
+  <CodeBlockTabsList>
+    <CodeBlockTabsTrigger value="npm">npm</CodeBlockTabsTrigger>
+    <CodeBlockTabsTrigger value="yarn">yarn</CodeBlockTabsTrigger>
+    <CodeBlockTabsTrigger value="pnpm">pnpm</CodeBlockTabsTrigger>
+    <CodeBlockTabsTrigger value="bun">bun</CodeBlockTabsTrigger>
+  </CodeBlockTabsList>
+  <CodeBlockTab value="npm">
+
+```bash
+npx init-doc@latest my-documents
+```
+
+  </CodeBlockTab>
+  <CodeBlockTab value="yarn">
+
+```bash
+yarn dlx init-doc@latest my-documents
+```
+
+  </CodeBlockTab>
+  <CodeBlockTab value="pnpm">
+
+```bash
+pnpm dlx init-doc@latest my-documents
+```
+
+  </CodeBlockTab>
+  <CodeBlockTab value="bun">
+
+```bash
+bunx init-doc@latest my-documents
+```
+
+  </CodeBlockTab>
+</CodeBlockTabs>
+
+To pin Useprint packages to a specific npm dist-tag (for example a prerelease), use `--tag`:
+
+<CodeBlockTabs groupId="package-manager" persist defaultValue="npm">
+  <CodeBlockTabsList>
+    <CodeBlockTabsTrigger value="npm">npm</CodeBlockTabsTrigger>
+    <CodeBlockTabsTrigger value="yarn">yarn</CodeBlockTabsTrigger>
+    <CodeBlockTabsTrigger value="pnpm">pnpm</CodeBlockTabsTrigger>
+    <CodeBlockTabsTrigger value="bun">bun</CodeBlockTabsTrigger>
+  </CodeBlockTabsList>
+  <CodeBlockTab value="npm">
+
+```bash
+npx init-doc@latest --tag next
+```
+
+  </CodeBlockTab>
+  <CodeBlockTab value="yarn">
+
+```bash
+yarn dlx init-doc@latest --tag next
+```
+
+  </CodeBlockTab>
+  <CodeBlockTab value="pnpm">
+
+```bash
+pnpm dlx init-doc@latest --tag next
+```
+
+  </CodeBlockTab>
+  <CodeBlockTab value="bun">
+
+```bash
+bunx init-doc@latest --tag next
+```
+
+  </CodeBlockTab>
+</CodeBlockTabs>
+
+## 2. Run locally
+
+Change into the project directory and install dependencies:
+
+<CodeBlockTabs groupId="package-manager" persist defaultValue="npm">
+  <CodeBlockTabsList>
+    <CodeBlockTabsTrigger value="npm">npm</CodeBlockTabsTrigger>
+    <CodeBlockTabsTrigger value="yarn">yarn</CodeBlockTabsTrigger>
+    <CodeBlockTabsTrigger value="pnpm">pnpm</CodeBlockTabsTrigger>
+    <CodeBlockTabsTrigger value="bun">bun</CodeBlockTabsTrigger>
+  </CodeBlockTabsList>
+  <CodeBlockTab value="npm">
+
+```bash
+cd useprint-starter
+npm install
+```
+
+  </CodeBlockTab>
+  <CodeBlockTab value="yarn">
+
+```bash
+cd useprint-starter
+yarn install
+```
+
+  </CodeBlockTab>
+  <CodeBlockTab value="pnpm">
+
+```bash
+cd useprint-starter
+pnpm install
+```
+
+  </CodeBlockTab>
+  <CodeBlockTab value="bun">
+
+```bash
+cd useprint-starter
+bun install
+```
+
+  </CodeBlockTab>
+</CodeBlockTabs>
+
+Then start the development server:
+
+<CodeBlockTabs groupId="package-manager" persist defaultValue="npm">
+  <CodeBlockTabsList>
+    <CodeBlockTabsTrigger value="npm">npm</CodeBlockTabsTrigger>
+    <CodeBlockTabsTrigger value="yarn">yarn</CodeBlockTabsTrigger>
+    <CodeBlockTabsTrigger value="pnpm">pnpm</CodeBlockTabsTrigger>
+    <CodeBlockTabsTrigger value="bun">bun</CodeBlockTabsTrigger>
+  </CodeBlockTabsList>
+  <CodeBlockTab value="npm">
+
+```bash
+npm run dev
+```
+
+  </CodeBlockTab>
+  <CodeBlockTab value="yarn">
+
+```bash
+yarn dev
+```
+
+  </CodeBlockTab>
+  <CodeBlockTab value="pnpm">
+
+```bash
+pnpm dev
+```
+
+  </CodeBlockTab>
+  <CodeBlockTab value="bun">
+
+```bash
+bun run dev
+```
+
+  </CodeBlockTab>
+</CodeBlockTabs>
+
+## 3. See changes live
+
+Open [http://localhost:3000](http://localhost:3000) and edit files under `documents/` to see updates in the preview.
+
+- Add new `.tsx` files in `documents/` with a default-exported React component.
+- Put static assets in `documents/static/` when you need images, fonts, or other files the preview can load.
+
+## 4. Next steps
+
+<Cards>
+  <Card title="Your first document" href="/docs/getting-started/your-first-document" description="Learn the document primitives and layout patterns." />
+  <Card title="Local preview" href="/docs/getting-started/preview-and-export" description="CLI options, export, and the render-to-PDF flow." />
+</Cards>

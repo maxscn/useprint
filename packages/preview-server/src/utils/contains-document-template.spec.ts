@@ -76,7 +76,7 @@ describe('containsDocumentTemplate()', () => {
         documentFilenames: [
           'github-access-token',
           'papermark-year-in-review',
-          'vercel-invite-user',
+          'project-brief',
           'yelp-recent-login',
         ],
         subDirectories: [],

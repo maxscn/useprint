@@ -1,3 +1,4 @@
+import fs from 'node:fs';
 import path from 'node:path';
 import url from 'node:url';
 import { createJiti } from 'jiti';
@@ -37,9 +38,12 @@ export const getPreviewServerLocation = async () => {
       'To run the preview server, the package "@useprint/preview" must be installed. Would you like to install it?',
     );
   }
-  const { version } = await usersProject.import<{
-    version: string;
-  }>('@useprint/preview');
+  const { version } = JSON.parse(
+    await fs.promises.readFile(
+      path.join(previewServerLocation, 'package.json'),
+      'utf8',
+    ),
+  ) as { version: string };
   if (version !== packageJson.version) {
     await ensurePreviewServerInstalled(
       `To run the preview server, the version of "@useprint/preview" must match the version of "useprint" (${packageJson.version}). Would you like to install it?`,

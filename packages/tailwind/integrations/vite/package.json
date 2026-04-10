@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@useprint/components": "workspace:*",
+    "@useprint/render": "file:../../../render",
     "@useprint/tailwind": "file:.yalc/@useprint/tailwind",
     "react": "^19",
     "react-dom": "^19"

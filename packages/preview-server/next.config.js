@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
+  outputFileTracingRoot: process.env.USER_PROJECT_LOCATION ?? __dirname,
+  turbopack: {
+    root: process.env.USER_PROJECT_LOCATION ?? __dirname,
+  },
   // this is needed so that the code for building documents works properly
   webpack: (
     /** @type {import('webpack').Configuration & { externals: string[] }} */
@@ -18,5 +22,5 @@ module.exports = {
   // What is probably happening is that it's noticing the files for the app are somewhere inside of a `node_modules` and automatically opt-outs of SWC's transpilation.
   //
   // TODO: Open an issue on Nextjs about this.
-  transpilePackages: ['useprint'],
+  transpilePackages: ['@useprint/preview'],
 };

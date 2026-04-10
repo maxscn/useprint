@@ -90,7 +90,6 @@ export const renderDocumentByPath = async (
     let pdfData: string;
     try {
       pdfData = await generatePdfFromHtml(markup.replaceAll('\0', ''), pageSize, isLandscape);
-      console.log("PDF data generated, length:", pdfData.length, "first 50 chars:", pdfData.substring(0, 50));
     } catch (pdfError) {
       // If PDF generation fails, log but don't fail the entire rendering
       // We'll return an empty string or handle it gracefully
@@ -120,8 +119,6 @@ export const renderDocumentByPath = async (
       reactMarkup,
       pdfData,
     };
-
-    console.log("Rendering result pdfData length:", renderingResult.pdfData.length);
 
     cache.set(cacheKey, renderingResult);
 

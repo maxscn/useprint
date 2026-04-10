@@ -9,7 +9,10 @@ import logSymbols from 'log-symbols';
 import normalize from 'normalize-path';
 import ora, { type Ora } from 'ora';
 import type React from 'react';
-import { renderingUtilitiesExporter } from '../utils/esbuild/renderring-utilities-exporter.js';
+import {
+  compileDocumentCssImports,
+  renderingUtilitiesExporter,
+} from '../utils/esbuild/renderring-utilities-exporter.js';
 import {
   type DocumentsDirectory,
   getDocumentsDirectoryMetadata,
@@ -32,6 +35,26 @@ const getDocumentTemplatesFromDirectory = (documentDirectory: DocumentsDirectory
 type ExportTemplatesOptions = Options & {
   silent?: boolean;
   pretty?: boolean;
+};
+
+const injectStylesIntoHtml = (html: string, styles: string[]) => {
+  if (styles.length === 0) {
+    return html;
+  }
+
+  const styleMarkup = styles
+    .map((css) => `<style data-useprint-document>${css.replaceAll('</style', '<\\/style')}</style>`)
+    .join('');
+
+  if (html.includes('</head>')) {
+    return html.replace('</head>', `${styleMarkup}</head>`);
+  }
+
+  if (html.includes('<html')) {
+    return html.replace(/<html([^>]*)>/, `<html$1><head>${styleMarkup}</head>`);
+  }
+
+  return `${styleMarkup}${html}`;
 };
 
 const filename = url.fileURLToPath(import.meta.url);
@@ -122,16 +145,27 @@ export const exportTemplates = async (
         spinner.render();
       }
       delete require.cache[template];
+      (
+        globalThis as typeof globalThis & {
+          __useprint_document_css_files?: string[];
+        }
+      ).__useprint_document_css_files = [];
       const documentModule = require(template) as {
         default: React.FC;
         render: (
           element: React.ReactElement,
         ) => Promise<string>;
         reactDocumentCreateReactElement: typeof React.createElement;
+        useprintDocumentStylePaths?: string[];
       };
-      const rendered = await documentModule.render(
+      const html = await documentModule.render(
         documentModule.reactDocumentCreateReactElement(documentModule.default, {}),
       );
+      const documentStyles = await compileDocumentCssImports(
+        documentModule.useprintDocumentStylePaths ?? [],
+        html,
+      );
+      const rendered = injectStylesIntoHtml(html, documentStyles);
       const htmlPath = template.replace(
         '.cjs',
         '.html',

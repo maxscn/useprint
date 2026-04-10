@@ -3,7 +3,7 @@ import type { Node } from '@babel/traverse';
 import traverse from '@babel/traverse';
 import * as esbuild from 'esbuild';
 import type { Config as TailwindOriginalConfig } from 'tailwindcss';
-import type { AST } from '../../../actions/document-validation/check-compatibility';
+import type { AST } from '../types';
 import { isErr } from '../../result';
 import { runBundledCode } from '../../run-bundled-code';
 

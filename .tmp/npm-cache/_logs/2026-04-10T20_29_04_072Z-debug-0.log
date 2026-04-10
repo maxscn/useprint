@@ -1,0 +1,19 @@
+0 verbose cli /Users/max/.vite-plus/js_runtime/node/24.14.1/bin/node /Users/max/.vite-plus/js_runtime/node/24.14.1/bin/npm
+1 info using npm@11.11.0
+2 info using node@v24.14.1
+3 silly config load:file:/Users/max/.vite-plus/js_runtime/node/24.14.1/lib/node_modules/npm/npmrc
+4 info config found workspace root at /Users/max/useprint
+5 silly config load:file:/Users/max/useprint/.npmrc
+6 silly config load:file:/Users/max/.npmrc
+7 silly config load:file:/Users/max/.vite-plus/js_runtime/node/24.14.1/etc/npmrc
+8 verbose title npm run build
+9 verbose argv "run" "build"
+10 verbose logfile logs-max:10 dir:/Users/max/useprint/.tmp/npm-cache/_logs/2026-04-10T20_29_04_072Z-
+11 verbose logfile /Users/max/useprint/.tmp/npm-cache/_logs/2026-04-10T20_29_04_072Z-debug-0.log
+12 silly logfile done cleaning log files
+13 verbose cwd /Users/max/useprint/packages/render
+14 verbose os Darwin 25.3.0
+15 verbose node v24.14.1
+16 verbose npm  v11.11.0
+17 verbose exit 0
+18 info ok

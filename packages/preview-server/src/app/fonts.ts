@@ -1,11 +1,4 @@
-import { Inter } from 'next/font/google';
 import Local from 'next/font/local';
-
-export const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-});
 
 export const sfMono = Local({
   src: [

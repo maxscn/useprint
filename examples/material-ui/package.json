@@ -1,0 +1,27 @@
+{
+  "name": "material-ui-pdf",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "useprint dev",
+    "export": "useprint export"
+  },
+  "dependencies": {
+    "@emotion/cache": "^11.14.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/server": "^11.11.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^7.3.6",
+    "@useprint/cli": "workspace:*",
+    "@useprint/components": "workspace:*",
+    "@useprint/preview": "workspace:*",
+    "react": "^18.0 || ^19.0 || ^19.0.0-rc",
+    "react-dom": "^18.0 || ^19.0 || ^19.0.0-rc"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "^5"
+  }
+}

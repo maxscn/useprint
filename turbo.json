@@ -1,13 +1,7 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": ["**/.env.*local", "pnpm-lock.yaml"],
-  "globalEnv": [
-    "SUPABASE_URL",
-    "SUPABASE_ANON_KEY",
-    "SUPABASE_TABLE_NAME",
-    "SPAM_ASSASSIN_HOST",
-    "SPAM_ASSASSIN_PORT"
-  ],
+  "globalDependencies": ["**/.env.*local", "bun.lock"],
+  "globalEnv": ["USEPRINT_DISABLE_REMOTE_FONTS"],
 
   "tasks": {
     "build": {

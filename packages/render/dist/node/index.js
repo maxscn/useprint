@@ -50,9 +50,7 @@ var __async = (__this, __arguments, generator) => {
 // src/node/index.ts
 var index_exports = {};
 __export(index_exports, {
-  plainTextSelectors: () => plainTextSelectors,
-  render: () => render,
-  renderAsync: () => renderAsync
+  render: () => render
 });
 module.exports = __toCommonJS(index_exports);
 
@@ -121,24 +119,7 @@ var render = (node) => __async(null, null, function* () {
   const document = `${doctype}${html.replace(/<!DOCTYPE.*?>/, "")}`;
   return document;
 });
-
-// src/shared/plain-text-selectors.ts
-var plainTextSelectors = [
-  { selector: "img", format: "skip" },
-  { selector: "[data-skip-in-text=true]", format: "skip" },
-  {
-    selector: "a",
-    options: { linkBrackets: false }
-  }
-];
-
-// src/node/index.ts
-var renderAsync = (element) => {
-  return render(element);
-};
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  plainTextSelectors,
-  render,
-  renderAsync
+  render
 });

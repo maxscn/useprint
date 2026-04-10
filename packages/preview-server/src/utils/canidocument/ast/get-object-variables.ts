@@ -1,6 +1,6 @@
 import type { Node } from '@babel/traverse';
 import traverse from '@babel/traverse';
-import type { AST } from '../../../actions/document-validation/check-compatibility';
+import type { AST } from '../types';
 
 export interface Position {
   line: number;

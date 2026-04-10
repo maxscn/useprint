@@ -1,5 +1,7 @@
 # @useprint/shared
 
+[docs](https://useprint.dev/docs/packages/shared)
+
 Shared constants and utilities used by the Useprint packages.
 
 ## Exports

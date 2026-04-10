@@ -1,9 +1,9 @@
 ---
-title: Preview and export
-description: Use the CLI to preview documents locally and export HTML output.
+title: Local preview
+description: Run the `useprint` CLI locally and wire `render()` into a PDF pipeline in code.
 ---
 
-The `useprint` CLI is the local workflow layer for the library. It helps you preview documents in the browser, export HTML, and build a production preview bundle.
+The `useprint` CLI is the local workflow layer for the library. It helps you preview documents in the browser.
 
 ## Start the preview app
 
@@ -19,41 +19,59 @@ To point at a different directory or port:
 npx useprint dev --dir ./templates --port 4000
 ```
 
-## Export HTML
+## Render to PDF in code
 
-When you want the rendered HTML files on disk, use:
+For server-side PDFs, the typical flow is: **`render(<YourDocument />)` → HTML string → headless Chromium print-to-PDF**. The HTML is the same shape the preview app uses; only the last step changes (on-screen vs. `page.pdf`).
 
-```bash
-npx useprint export
-```
-
-This builds each document component, renders it to HTML, and writes the output into `./out`.
-
-You can change the output directory or keep the HTML easier to inspect:
+Install what you need for Node (Playwright is one common Chromium driver):
 
 ```bash
-npx useprint export --outDir dist-documents --pretty
+npm install @useprint/render @useprint/components playwright
 ```
 
-## Build the preview app
+End-to-end example:
 
-If you want a built preview app inside `.useprint`, run:
+```tsx
+import { writeFile } from 'node:fs/promises';
+import { render } from '@useprint/render';
+import { Body, Document, Head, Page } from '@useprint/components';
+import { chromium } from 'playwright';
 
-```bash
-npx useprint build
-npx useprint start
+function Quote() {
+  return (
+    <Document>
+      <Head />
+      <Body>
+        <Page style={{ padding: 40 }}>
+          <h1>Quote</h1>
+          <p>Render this tree to HTML, then print that HTML in Chromium.</p>
+        </Page>
+      </Body>
+    </Document>
+  );
+}
+
+export async function renderQuoteToPdf(outputPath: string) {
+  const html = await render(<Quote />);
+
+  const browser = await chromium.launch();
+  try {
+    const page = await browser.newPage();
+    await page.setContent(html, { waitUntil: 'networkidle' });
+    const pdf = await page.pdf({ format: 'A4', printBackground: true });
+    await writeFile(outputPath, pdf);
+  } finally {
+    await browser.close();
+  }
+}
 ```
 
-This is useful when you want the preview server bundled as a separate app.
+Swap Playwright for Puppeteer or another stack if you prefer—the boundary is always **HTML from `render`**, then **your PDF backend**.
 
 ## Where PDFs fit in
 
-Useprint itself focuses on React authoring and HTML rendering. Once you have HTML, you can:
-
-- send it through `useprint-js` for the recommended hosted PDF flow
-- hand it to your own Chromium, Playwright, or browser-based PDF renderer
+Useprint focuses on React authoring and HTML rendering. After `render`, you hand the HTML to Chromium (as above), a hosted HTML-to-PDF API, or any other print pipeline.
 
 <Cards>
-  <Card title="useprint-js integration" href="/docs/integrations/useprint-js" />
-  <Card title="Custom Chromium setup" href="/docs/integrations/custom-chromium" />
+  <Card title="Chromium" href="/docs/backends/chromium" />
 </Cards>

@@ -1,6 +1,6 @@
 import traverse from '@babel/traverse';
 import type { JitContext } from 'tailwindcss/lib/lib/setupContextUtils';
-import type { AST } from '../../../actions/document-validation/check-compatibility';
+import type { AST } from '../types';
 import { getTailwindConfig, type TailwindConfig } from './get-tailwind-config';
 import { setupTailwindContext } from './setup-tailwind-context';
 

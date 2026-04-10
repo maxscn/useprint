@@ -4,10 +4,10 @@ import { parse } from '@babel/parser';
 import { getTailwindMetadata } from './get-tailwind-metadata';
 
 describe('getTailwindMetadata()', () => {
-  test('with the netlify-welcome demo document', async () => {
+  test('with the project-proposal seed document', async () => {
     const documentPath = path.resolve(
       __dirname,
-      '../../../../../../apps/demo/documents/welcome/netlify-welcome.tsx',
+      '../../../../../../packages/preview-server/scripts/utils/default-seed/contracts/project-proposal.tsx',
     );
     const reactCode = await fs.readFile(documentPath, 'utf8');
     const ast = parse(reactCode, {

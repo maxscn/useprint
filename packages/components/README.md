@@ -1,5 +1,7 @@
 # @useprint/components
 
+[docs](https://useprint.dev/docs/packages/components)
+
 React primitives for building printable documents.
 
 ## Install

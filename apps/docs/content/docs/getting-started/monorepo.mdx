@@ -1,0 +1,102 @@
+---
+title: Monorepo setup
+description: Put usePrint in a dedicated workspace package with npm workspaces, similar to React Email’s monorepo flow.
+---
+
+This guide follows the same workspace pattern as [React Email’s npm workspaces setup](https://react.email/docs/getting-started/monorepo-setup/npm): one package in your monorepo owns the documents, dependencies, and preview script, while the root only declares workspaces.
+
+## 1. Create a workspace package
+
+Add a folder for your document package (often under `./packages/*`). Create a `package.json` there and register the path in the root `package.json` `workspaces` array.
+
+**Root `package.json`**
+
+```json
+{
+  "name": "my-monorepo",
+  "private": true,
+  "workspaces": ["packages/*"]
+}
+```
+
+**`packages/documents/package.json`** (example name—you can call the folder anything)
+
+```json
+{
+  "name": "@acme/documents",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "useprint dev",
+    "export": "useprint export",
+    "build": "useprint build"
+  }
+}
+```
+
+## 2. Install dependencies
+
+From the **workspace package** directory (or using `npm install` at the repo root so workspaces link correctly):
+
+```bash
+cd packages/documents
+npm install @useprint/components react react-dom
+npm install -D @useprint/cli @types/react @types/react-dom typescript
+```
+
+Pin versions the way your monorepo already does (`-E` exact, shared version policy, etc.).
+
+## 3. Add a `documents` directory
+
+The CLI defaults to `./documents` **relative to the current working directory** when you run `useprint`. Keep that layout inside the workspace package:
+
+```text
+packages/documents/
+  package.json
+  documents/
+    invoice.tsx
+    static/
+```
+
+- Default-export React components from `.tsx` files in `documents/`
+- Put assets in `documents/static/`
+
+## 4. Run the preview server
+
+From the workspace package:
+
+```bash
+cd packages/documents
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) and edit files under `documents/`.
+
+From the **monorepo root**, you can use the workspace name:
+
+```bash
+npm run dev -w @acme/documents
+```
+
+(Replace `@acme/documents` with the `name` field from that package’s `package.json`.)
+
+## 5. Optional flags
+
+If your documents live somewhere other than `./documents`, pass `--dir`:
+
+```bash
+useprint dev --dir ./templates
+```
+
+See [Local preview](/docs/getting-started/preview-and-export) for `export`, `build`, and rendering to PDF in application code.
+
+## pnpm and Yarn
+
+The layout is the same; only the workspace manifest and filter commands differ—for example a `pnpm-workspace.yaml` with `packages: ['packages/*']` and `pnpm --filter @acme/documents dev`.
+
+## Next steps
+
+<Cards>
+  <Card title="Your first document" href="/docs/getting-started/your-first-document" />
+  <Card title="Local preview" href="/docs/getting-started/preview-and-export" />
+</Cards>

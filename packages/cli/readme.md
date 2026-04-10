@@ -1,5 +1,7 @@
 # @useprint/cli
 
+[docs](https://useprint.dev/docs/packages/cli)
+
 Preview, export, and build Useprint documents from the command line.
 
 ## Install

@@ -1,5 +1,7 @@
 # @useprint/tailwind
 
+[docs](https://useprint.dev/docs/packages/tailwind)
+
 A React wrapper that applies Tailwind classes to Useprint documents.
 
 ## Install

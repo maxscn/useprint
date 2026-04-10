@@ -5,20 +5,34 @@ description: Author documents as React components, render them to HTML, and plug
 
 Useprint is a React-first toolkit for building printable documents as actual React components.
 
+The docs are a WIP and will be improved upon. This library is a very narrow fork from [React Email](https://react.email) and optimized for making documents. This library has mostly been used internally, so I apologize if the docs are a bit lackluster, but I have been using the library internally and it has improved our PDF DX tremendously.
+
 The core flow is simple:
 
 1. Build your document with `@useprint/components`
 2. Preview it locally with `@useprint/cli`
 3. Render it to HTML with `@useprint/render`
-4. Turn that HTML into a PDF with `useprint-js` or your own Chromium setup
+4. Turn that HTML into a PDF with `useprint-js`[^useprint-js] or your own Chromium setup
+
+[^useprint-js]: `useprint-js` is not publicly available yet but is coming soon. Join the [Useprint Discord](https://discord.gg/MEKzQGub) for updates.
 
 ## Start Here
 
 <Cards>
   <Card
-    title="Installation"
+    title="Automatic setup"
+    href="/docs/getting-started/automatic-setup"
+    description="Run npx init-doc@latest for a ready-made project and preview."
+  />
+  <Card
+    title="Manual install"
     href="/docs/getting-started/installation"
     description="Start with @useprint/components and @useprint/cli."
+  />
+  <Card
+    title="Monorepo setup"
+    href="/docs/getting-started/monorepo"
+    description="Dedicated workspace package with npm workspaces (React Email–style layout)."
   />
   <Card
     title="Your first document"
@@ -26,66 +40,37 @@ The core flow is simple:
     description="Create a page-aware document as a React component."
   />
   <Card
-    title="Preview and export"
+    title="Local preview"
     href="/docs/getting-started/preview-and-export"
-    description="Run the local preview app, export HTML, or build a preview bundle."
+    description="Preview with the CLI and follow the render-to-PDF pattern in code."
   />
 </Cards>
 
-## Recommended Packages
-
-For most projects, start with the authoring and preview combo:
-
-```bash
-npm install @useprint/components
-npm install -D @useprint/cli
-```
-
-When you need lower-level control, add the dedicated packages directly.
-
-<Cards>
-  <Card
-    title="@useprint/components"
-    href="/docs/packages/components"
-    description="Document primitives plus re-exports for render and Tailwind."
-  />
-  <Card
-    title="@useprint/cli"
-    href="/docs/packages/cli"
-    description="Preview, export, and build document workflows from the command line."
-  />
-  <Card
-    title="@useprint/render"
-    href="/docs/packages/render"
-    description="Turn React trees into printable HTML."
-  />
-  <Card
-    title="@useprint/tailwind"
-    href="/docs/packages/tailwind"
-    description="Apply Tailwind classes to rendered documents."
-  />
-</Cards>
-
-## Integrations
+## Backends
 
 Useprint focuses on the React-to-HTML layer. Once you have HTML, you can choose how PDFs are produced.
 
 <Cards>
   <Card
     title="useprint-js"
-    href="/docs/integrations/useprint-js"
-    description="Recommended hosted flow for turning React or HTML into PDFs."
+    href="https://discord.gg/MEKzQGub"
+    description="Hosted HTML→PDF flow (coming soon—not on npm yet). Join Discord for updates."
   />
   <Card
-    title="Custom Chromium"
-    href="/docs/integrations/custom-chromium"
+    title="Chromium"
+    href="/docs/backends/chromium"
     description="Render HTML with Useprint, then drive Chromium or Playwright yourself."
   />
 </Cards>
+
+## Community
+
+Join the [Useprint Discord](https://discord.gg/MEKzQGub) to ask questions, share what you are building, and follow along with the project.
 
 ## Why Useprint
 
 - Author documents in React instead of string templates.
 - Keep layout logic close to the component tree that produces it.
 - Preview documents locally while you iterate.
-- Render portable HTML that works with your own PDF backend or `useprint-js`.
+- Render portable HTML that works with your own PDF backend or `useprint-js`[^useprint-js].
+- Because the PDF path is Chromium-based, you are not limited to a bespoke or partial CSS engine—standard web layout and styling apply.

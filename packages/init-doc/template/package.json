@@ -1,0 +1,22 @@
+{
+  "name": "init-doc",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "useprint build",
+    "dev": "useprint dev",
+    "export": "useprint export"
+  },
+  "dependencies": {
+    "@useprint/components": "INSERT_USEPRINT_COMPONENTS_VERSION",
+    "react-dom": "19.0.0",
+    "react": "19.0.0"
+  },
+  "devDependencies": {
+    "@useprint/cli": "INSERT_USEPRINT_CLI_VERSION",
+    "@useprint/preview": "INSERT_USEPRINT_PREVIEW_VERSION",
+    "@types/react": "19.2.13",
+    "@types/react-dom": "19.2.3",
+    "typescript": "^5.8.3"
+  }
+}

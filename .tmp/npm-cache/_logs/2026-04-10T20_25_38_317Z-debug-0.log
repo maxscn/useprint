@@ -1,0 +1,48 @@
+0 verbose cli /Users/max/.vite-plus/js_runtime/node/24.14.1/bin/node /Users/max/.vite-plus/js_runtime/node/24.14.1/bin/npm
+1 info using npm@11.11.0
+2 info using node@v24.14.1
+3 silly config load:file:/Users/max/.vite-plus/js_runtime/node/24.14.1/lib/node_modules/npm/npmrc
+4 info config found workspace root at /Users/max/useprint
+5 silly config load:file:/Users/max/useprint/.npmrc
+6 silly config load:file:/Users/max/.npmrc
+7 silly config load:file:/Users/max/.vite-plus/js_runtime/node/24.14.1/etc/npmrc
+8 verbose title npm pack
+9 verbose argv "pack"
+10 verbose logfile logs-max:10 dir:/Users/max/useprint/.tmp/npm-cache/_logs/2026-04-10T20_25_38_317Z-
+11 verbose logfile /Users/max/useprint/.tmp/npm-cache/_logs/2026-04-10T20_25_38_317Z-debug-0.log
+12 silly logfile done cleaning log files
+13 silly packumentCache heap:4496293888 maxSize:1124073472 maxEntrySize:562036736
+14 notice
+15 notice 📦  @useprint/components@0.1.1
+16 notice Tarball Contents
+17 notice 951B README.md
+17 notice 1.6kB dist/index.d.mts
+17 notice 1.6kB dist/index.d.ts
+17 notice 6.2kB dist/index.js
+17 notice 3.8kB dist/index.mjs
+17 notice 171B dist/src/body.d.ts
+17 notice 448B dist/src/document.d.ts
+17 notice 309B dist/src/head.d.ts
+17 notice 233B dist/src/index.d.ts
+17 notice 72B dist/src/new-page.d.ts
+17 notice 344B dist/src/page.d.ts
+17 notice 952B dist/src/table.d.ts
+17 notice 219B dist/src/unbreakable.d.ts
+17 notice 260B dist/tsup.config.d.ts
+17 notice 960B package.json
+18 notice Tarball Details
+19 notice name: @useprint/components
+20 notice version: 0.1.1
+21 notice filename: useprint-components-0.1.1.tgz
+22 notice package size: 4.1 kB
+23 notice unpacked size: 18.1 kB
+24 notice shasum: 55c6a94b28ea0bc8125ba4b13983dfb70e1dfc29
+25 notice integrity: sha512-+7fEdEusq/DEF[...]/x4GCtV7vi1qQ==
+26 notice total files: 15
+27 notice
+28 verbose cwd /Users/max/useprint/packages/components
+29 verbose os Darwin 25.3.0
+30 verbose node v24.14.1
+31 verbose npm  v11.11.0
+32 verbose exit 0
+33 info ok

@@ -1,0 +1,44 @@
+{
+  "name": "init-doc",
+  "version": "0.1.1",
+  "description": "The easiest way to get started with Useprint",
+  "main": "src/index.js",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "test": "vitest run",
+    "test:e2e": "vitest run src/index.spec.ts"
+  },
+  "dependencies": {
+    "commander": "^13.0.0",
+    "fs-extra": "^11.3.3",
+    "log-symbols": "^7.0.0",
+    "ora": "^8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxscn/useprint.git",
+    "directory": "packages/init-doc"
+  },
+  "keywords": [
+    "useprint",
+    "react",
+    "pdf",
+    "document"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "bin": {
+    "init-doc": "src/index.js"
+  },
+  "devDependencies": {
+    "nypm": "0.6.0",
+    "react": "19.0.0",
+    "tsconfig": "workspace:*",
+    "typescript": "5.8.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

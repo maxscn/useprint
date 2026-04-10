@@ -11,7 +11,6 @@ import { CodeContainer } from "../../../components/code-container";
 import { PdfViewer } from "../../../components/pdf-viewer";
 import { Print } from "../../../components/print";
 
-import { useToolbarState } from "../../../components/toolbar";
 import { Tooltip } from "../../../components/tooltip";
 import { ActiveViewToggleGroup } from "../../../components/topbar/active-view-toggle-group";
 import { LandscapeToggle } from "../../../components/topbar/landscape-toggle";
@@ -109,15 +108,14 @@ const Preview = ({
 		router.push(`${pathname}?${params.toString()}${location.hash}`);
 	}, 300);
 
-	const { toggled: toolbarToggled } = useToolbarState();
 	const effectiveDimensions = isLandscape
 		? { width: currentPreset.dimensions.height, height: currentPreset.dimensions.width }
 		: currentPreset.dimensions;
-	console.log(effectiveDimensions)
 	return (
 		<>
 			<PrintPreview documentTitle={documentTitle} />
 
+			<div className="flex min-h-0 flex-1 flex-col">
 			<Topbar documentTitle={documentTitle} className="print:hidden">
 				<ViewSizeControls
 					setViewHeight={(height) => {
@@ -160,13 +158,12 @@ const Preview = ({
 			<div
 				{...props}
 				className={cn(
-					"h-[calc(100%-3.5rem-2.375rem)] will-change-[height] flex transition-[height] duration-300",
+					"min-h-0 flex-1 will-change-[height] flex transition-[height] duration-300",
 					activeView === "preview" && "bg-gray-200",
 					activeView === "preview" &&
 						renderedDocumentMetadata?.pdfData &&
-						"p-0",
+						"flex-col overflow-hidden p-0",
 					activeView !== "preview" && "p-4 overflow-auto",
-					toolbarToggled && "h-[calc(100%-3.5rem-13rem)]",
 					className,
 				)}
 				ref={(element) => {
@@ -195,6 +192,7 @@ const Preview = ({
 							renderedDocumentMetadata.pdfData &&
 							PdfViewer && (
 								<PdfViewer
+									className="min-h-0 min-w-0 flex-1"
 									pdfData={renderedDocumentMetadata.pdfData}
 									width={effectiveDimensions.width}
 									height={effectiveDimensions.height}
@@ -235,6 +233,7 @@ const Preview = ({
 				) : null}
 
 				<Toaster />
+			</div>
 			</div>
 		</>
 	);

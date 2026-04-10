@@ -384,12 +384,14 @@ describe('non-inlinable styles', () => {
       return <body className={props.className}>{props.children}</body>;
     };
     const output = await render(
-      <Tailwind>
-        {/* <Head /> */}
-        <Body className="mx-auto my-auto bg-white font-sans hover:underline md:px-[64px]">
-          <div className="hover:underline md:px-[64px]" />
-        </Body>
-      </Tailwind>,
+      <html lang="en">
+        <Tailwind>
+          <head />
+          <Body className="mx-auto my-auto bg-white font-sans hover:underline md:px-[64px]">
+            <div className="hover:underline md:px-[64px]" />
+          </Body>
+        </Tailwind>
+      </html>,
     );
 
     expect(output).toMatchSnapshot();
@@ -453,10 +455,14 @@ describe('non-inlinable styles', () => {
   it('should work with relatively complex media query utilities', async () => {
     const Document = () => {
       return (
-        <Tailwind>
-          {/* <Head /> */}
-          <p className="text-blue-700 max-sm:text-red-600">I am some text</p>
-        </Tailwind>
+        <html lang="en">
+          <Tailwind>
+            <head />
+            <body>
+              <p className="text-blue-700 max-sm:text-red-600">I am some text</p>
+            </body>
+          </Tailwind>
+        </html>
       );
     };
 

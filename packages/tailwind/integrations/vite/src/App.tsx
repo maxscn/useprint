@@ -1,8 +1,8 @@
-import { render } from '@useprint/components';
-import { VercelInviteUserDocument } from '../documents/vercel-invite-user';
+import { render } from '@useprint/render';
+import { ProjectBriefDocument } from '../documents/project-brief';
 
 function App() {
-  const documentHtml = render(<VercelInviteUserDocument />);
+  const documentHtml = render(<ProjectBriefDocument />);
 
   return <div dangerouslySetInnerHTML={{ __html: documentHtml }} />;
 }

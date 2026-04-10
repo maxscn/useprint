@@ -1,5 +1,7 @@
 # @useprint/render
 
+[docs](https://useprint.dev/docs/packages/render)
+
 Transform React components into printable HTML documents.
 
 ## Install

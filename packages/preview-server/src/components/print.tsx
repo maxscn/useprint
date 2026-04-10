@@ -1,20 +1,32 @@
+"use client";
+
 import { PageSize } from "@useprint/shared";
 import type * as React from "react";
+import { useCallback, useEffect } from "react";
 import { toast } from "sonner";
 
+function isEditableElement(target: EventTarget | null): boolean {
+	if (!(target instanceof HTMLElement)) {
+		return false;
+	}
+	if (target.isContentEditable) {
+		return true;
+	}
+	const tag = target.tagName;
+	return tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT";
+}
+
 export const Print = ({ pdfData, options }: { pdfData?: string; options?: { pageSize?: PageSize["name"], landscape?: boolean } }) => {
-	const onFormSubmit = async (e: React.FormEvent) => {
+	const triggerPrint = useCallback(async () => {
 		if (typeof window === "undefined") {
 			return;
 		}
-		e.preventDefault();
 		if (!pdfData) {
 			toast.error("No PDF data available to print!");
 			return;
 		}
 
 		try {
-			// Convert base64 to blob
 			const binaryString = atob(pdfData);
 			const bytes = new Uint8Array(binaryString.length);
 			for (let i = 0; i < binaryString.length; i++) {
@@ -23,12 +35,10 @@ export const Print = ({ pdfData, options }: { pdfData?: string; options?: { page
 			const blob = new Blob([bytes], { type: "application/pdf" });
 			const url = URL.createObjectURL(blob);
 
-			// Open PDF in new window and trigger print
 			const printWindow = window.open(url, "_blank");
 			if (printWindow) {
 				printWindow.onload = () => {
 					printWindow.print();
-					// Clean up the URL after a delay to allow printing
 					setTimeout(() => {
 						URL.revokeObjectURL(url);
 					}, 1000);
@@ -41,6 +51,28 @@ export const Print = ({ pdfData, options }: { pdfData?: string; options?: { page
 			console.error("Error printing PDF:", error);
 			toast.error("Failed to print PDF");
 		}
+	}, [pdfData]);
+
+	useEffect(() => {
+		const onKeyDown = (e: KeyboardEvent) => {
+			const isPrintShortcut =
+				(e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "p";
+			if (!isPrintShortcut) {
+				return;
+			}
+			if (isEditableElement(e.target)) {
+				return;
+			}
+			e.preventDefault();
+			void triggerPrint();
+		};
+		window.addEventListener("keydown", onKeyDown);
+		return () => window.removeEventListener("keydown", onKeyDown);
+	}, [triggerPrint]);
+
+	const onFormSubmit = async (e: React.FormEvent) => {
+		e.preventDefault();
+		await triggerPrint();
 	};
 
 	return (

@@ -78,11 +78,10 @@ export const Shell = ({ children, currentDocumentOpenSlug }: ShellProps) => {
         </React.Suspense>
         <main
           className={cn(
-            'inline-block relative overflow-hidden will-change-[width]',
+            'relative flex min-h-0 flex-1 flex-col overflow-hidden will-change-[width]',
             'w-full h-full',
             '[transition:width_0.2s_ease-in-out,_transform_0.2s_ease-in-out]',
             {
-              'lg:w-[calc(100%-16rem)]': sidebarToggled,
               'opacity-0 lg:opacity-100': !sidebarToggled,
             },
           )}

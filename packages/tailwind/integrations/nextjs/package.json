@@ -9,7 +9,7 @@
     "preinstall": "yalc add @useprint/tailwind"
   },
   "dependencies": {
-    "@useprint/components": "workspace:*",
+    "@useprint/render": "file:../../../render",
     "@useprint/tailwind": "file:.yalc/@useprint/tailwind",
     "next": "^15",
     "react": "^19",

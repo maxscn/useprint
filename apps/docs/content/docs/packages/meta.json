@@ -1,4 +1,4 @@
 {
   "title": "Packages",
-  "pages": ["components", "cli", "render", "tailwind", "shared", "preview", "tsconfig"]
+  "pages": ["components", "cli", "render", "tailwind", "shared", "preview"]
 }

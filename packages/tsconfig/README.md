@@ -1,5 +1,7 @@
 # tsconfig
 
+[docs](https://useprint.dev/docs)
+
 Shared TypeScript presets for the Useprint workspace.
 
 ## Included presets

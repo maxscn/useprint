@@ -5,7 +5,7 @@ import { exportTemplates } from '../export.js';
 test('document export', { retry: 3 }, async () => {
   const pathToDocumentsDirectory = path.resolve(
     __dirname,
-    '../../../../../apps/demo/documents',
+    '../../../../preview-server/scripts/utils/default-seed',
   );
   const pathToDumpMarkup = path.resolve(__dirname, './out');
   await exportTemplates(pathToDumpMarkup, pathToDocumentsDirectory, {
@@ -16,7 +16,7 @@ test('document export', { retry: 3 }, async () => {
   expect(fs.existsSync(pathToDumpMarkup)).toBe(true);
   expect(
     await fs.promises.readFile(
-      path.resolve(pathToDumpMarkup, './notifications/vercel-invite-user.html'),
+      path.resolve(pathToDumpMarkup, './contracts/project-proposal.html'),
       'utf8',
     ),
   ).toMatchSnapshot();

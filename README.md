@@ -1,9 +1,35 @@
 # UsePrint
+
+[docs](https://useprint.dev)
+
 A modern way to build PDF documents.
 
 ## Introduction
 
 UsePrint is for PDFs what react.email is for creating emails. It provides a set of components to compose documents, a preview server, a self-hostable service for generating PDFs.
+
+## Example
+
+
+```tsx
+import { Body, Document, Head, Page } from '@useprint/components';
+import { Tailwind } from '@useprint/tailwind';
+
+export default function Proposal() {
+  return (
+    <Tailwind>
+      <Document>
+        <Head />
+        <Body>
+          <Page className="bg-white p-10 text-slate-900">
+            <h1 className="text-3xl font-semibold">Proposal</h1>
+          </Page>
+        </Body>
+      </Document>
+    </Tailwind>
+  );
+}
+```
 
 ## Why
 

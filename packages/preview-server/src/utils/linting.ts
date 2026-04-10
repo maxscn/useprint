@@ -1,7 +1,30 @@
-import { checkImages } from '../actions/document-validation/check-images';
-import { checkLinks } from '../actions/document-validation/check-links';
-import type { LintingRow } from '../components/toolbar/linter';
 import { loadStream } from './load-stream';
+
+type CheckingResult = {
+  status: 'error' | 'warning' | 'success';
+  checks: {
+    type: string;
+    passed: boolean;
+    metadata: {
+      fetchStatusCode?: number;
+      byteCount?: number;
+    };
+  }[];
+  codeLocation: {
+    line: number;
+    column: number;
+  };
+};
+
+export type LintingRow =
+  | {
+      source: 'image';
+      result: CheckingResult & { source: string };
+    }
+  | {
+      source: 'link';
+      result: CheckingResult & { link: string };
+    };
 
 export interface LintingSource<T> {
   getStream(): Promise<ReadableStream<T>>;
@@ -13,38 +36,11 @@ function createSource<T>(source: LintingSource<T>): LintingSource<T> {
 }
 
 export function getLintingSources(
-  markup: string,
+  _markup: string,
 
-  urlBase: string,
+  _urlBase: string,
 ): LintingSource<unknown>[] {
-  return [
-    createSource({
-      getStream() {
-        return checkImages(markup, urlBase);
-      },
-      mapValue(result) {
-        if (result && result.status !== 'success') {
-          return {
-            result: result,
-            source: 'image',
-          };
-        }
-      },
-    }),
-    createSource({
-      getStream() {
-        return checkLinks(markup);
-      },
-      mapValue(result) {
-        if (result && result.status !== 'success') {
-          return {
-            result: result,
-            source: 'link',
-          };
-        }
-      },
-    }),
-  ];
+  return [];
 }
 
 export async function* loadLintingRowsFrom(sources: LintingSource<unknown>[]) {

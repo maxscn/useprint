@@ -1,15 +1,19 @@
 ---
-title: Installation
+title: Manual install
 description: Install the default Useprint authoring and preview stack.
 ---
 
-For most projects, the best way to start is the combo of `@useprint/components` for authoring and `@useprint/cli` for local preview.
+For a new project from scratch, [Automatic setup](/docs/getting-started/automatic-setup) with `npx init-doc@latest` is usually the quickest path.
 
-## Install the starter combo
+For most existing projects, the best way to start is the combo of `@useprint/components` for authoring and `@useprint/cli` for local preview.
+
+For **npm / pnpm / Yarn workspaces**, use the dedicated [Monorepo setup](/docs/getting-started/monorepo) guide so preview runs from the correct package.
+
+## Install
 
 ```bash
-npm install @useprint/components
-npm install -D @useprint/cli
+npm install @useprint/components react react-dom
+npm install -D @useprint/cli @types/react @types/react-dom typescript
 ```
 
 This gives you:
@@ -17,6 +21,7 @@ This gives you:
 - React document primitives such as `Document`, `Head`, `Body`, and `Page`
 - Access to rendering and Tailwind helpers through the component package
 - A local preview and export workflow through the `useprint` CLI
+- TypeScript and React type packages for `.tsx` documents
 
 ## Add a documents directory
 
@@ -31,20 +36,9 @@ documents/
 - Put your document components directly in `documents/`
 - Put images, fonts, and other static assets in `documents/static/`
 
-## When to install packages directly
-
-Install dedicated packages when you want tighter control over the stack:
-
-```bash
-npm install @useprint/render @useprint/tailwind
-```
-
-- Use `@useprint/render` when you only need the React-to-HTML layer
-- Use `@useprint/tailwind` when you want Tailwind classes applied during rendering
-
 ## Next steps
 
 <Cards>
   <Card title="Create your first document" href="/docs/getting-started/your-first-document" />
-  <Card title="Preview and export" href="/docs/getting-started/preview-and-export" />
+  <Card title="Local preview" href="/docs/getting-started/preview-and-export" />
 </Cards>

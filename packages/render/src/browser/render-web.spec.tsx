@@ -106,6 +106,10 @@ describe('render on the browser environment', () => {
   ;
 
   it('should properly wait for Suepsense boundaries to ending before resolving', async () => {
+    const fetchMock = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(new Response('<p>resolved browser content</p>'));
+
     const DocumentTemplate = () => {
       const html = usePromise(
         () => fetch('https://example.com').then((res) => res.text()),
@@ -118,6 +122,8 @@ describe('render on the browser environment', () => {
     const renderedTemplate = await render(<DocumentTemplate />);
 
     expect(renderedTemplate).toMatchSnapshot();
+
+    fetchMock.mockRestore();
   });
 
   // See https://github.com/maxscn/useprint/issues/2263

@@ -86,6 +86,10 @@ describe('render on node environments', () => {
   });
 
   it('that it properly waits for Suepsense boundaries to resolve before resolving', async () => {
+    const fetchMock = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(new Response('<p>resolved node content</p>'));
+
     const DocumentTemplate = () => {
       const html = usePromise(
         () => fetch('https://example.com').then((res) => res.text()),
@@ -102,6 +106,8 @@ describe('render on node environments', () => {
     );
 
     expect(renderedTemplate).toMatchSnapshot();
+
+    fetchMock.mockRestore();
   });
 
   it('converts a React component into HTML', async () => {

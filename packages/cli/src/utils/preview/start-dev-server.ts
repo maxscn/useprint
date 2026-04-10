@@ -1,8 +1,8 @@
 import http from 'node:http';
+import { createRequire } from 'node:module';
 import path from 'node:path';
 import url from 'node:url';
 import chalk from 'chalk';
-import { createJiti } from 'jiti';
 import logSymbols from 'log-symbols';
 import ora from 'ora';
 import { registerSpinnerAutostopping } from '../register-spinner-autostopping.js';
@@ -41,10 +41,10 @@ export const startDevServer = async (
   }
 
   const previewServerLocation = await getPreviewServerLocation();
-  const previewServer = createJiti(previewServerLocation);
-
-  const { default: next } =
-    await previewServer.import<typeof import('next')>('next');
+  const requireFromPreviewServer = createRequire(
+    path.join(previewServerLocation, 'package.json'),
+  );
+  const next = requireFromPreviewServer('next') as typeof import('next').default;
 
   devServer = http.createServer((req, res) => {
     if (!req.url) {
@@ -138,11 +138,17 @@ export const startDevServer = async (
 
   const app = next({
     // passing in env here does not get the environment variables there
-    dev: false,
+    dev: true,
+    webpack: true,
     conf: {
+      outputFileTracingRoot: process.cwd(),
+      transpilePackages: ['@useprint/preview'],
       images: {
         // This is to avoid the warning with sharp
         unoptimized: true,
+      },
+      turbopack: {
+        root: process.cwd(),
       },
     },
     hostname: 'localhost',

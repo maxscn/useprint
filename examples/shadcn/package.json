@@ -1,11 +1,11 @@
 {
-  "name": "regular-pdf",
+  "name": "shadcn-invoice",
   "module": "index.ts",
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "useprint dev",
-    "export": "useprint export"
+    "dev": "bun ../../packages/cli/src/index.ts dev",
+    "export": "bun ../../packages/cli/src/index.ts export"
   },
   "devDependencies": {
     "@types/bun": "latest"
