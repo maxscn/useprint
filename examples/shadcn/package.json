@@ -1,5 +1,6 @@
 {
   "name": "shadcn-invoice",
+  "version": "0.0.0",
   "module": "index.ts",
   "type": "module",
   "private": true,
